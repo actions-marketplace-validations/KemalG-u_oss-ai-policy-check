@@ -161,7 +161,7 @@ class MainTests(unittest.TestCase):
     def test_version_flag(self):
         code, out, _ = run(["--version"])
         self.assertEqual(code, 0)
-        self.assertIn("oss-ai-policy-check 0.3.0", out)
+        self.assertIn("oss-ai-policy-check 0.3.1", out)
 
 
 if __name__ == "__main__":

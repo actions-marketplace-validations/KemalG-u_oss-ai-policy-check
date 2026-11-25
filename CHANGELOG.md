@@ -7,6 +7,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-11-25
+
 ### Added
 
 - Project health files: `CODE_OF_CONDUCT.md` (Contributor Covenant 2.1) and `CITATION.cff`; an OpenSSF
@@ -258,5 +260,6 @@ first run; responses are cached under `tests/golden/_cache`, then `--offline` re
 - The GitHub Action runs straight from its own checkout (no install, no download), so `uses: ...@v0.2.0` runs
   the v0.2.0 code.
 
+[0.3.1]: https://github.com/KemalG-u/oss-ai-policy-check/releases/tag/v0.3.1
 [0.3.0]: https://github.com/KemalG-u/oss-ai-policy-check/releases/tag/v0.3.0
 [0.2.0]: https://github.com/KemalG-u/oss-ai-policy-check/releases/tag/v0.2.0

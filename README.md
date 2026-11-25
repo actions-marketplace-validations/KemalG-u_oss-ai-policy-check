@@ -1,4 +1,4 @@
-> **Status: active, v0.3.0 (pre-1.0).** Interfaces may change.
+> **Status: active, v0.3.1 (pre-1.0).** Interfaces may change.
 
 # oss-ai-policy-check
 
@@ -31,7 +31,7 @@ permissions:
 
 steps:
   - id: policy
-    uses: KemalG-u/oss-ai-policy-check@v0.3.0
+    uses: KemalG-u/oss-ai-policy-check@v0.3.1
     with:
       repo: owner/repo        # default: the repository running the workflow
       fail-on: banned         # empty means report only

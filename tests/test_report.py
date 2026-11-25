@@ -285,7 +285,7 @@ class SarifTests(unittest.TestCase):
     def test_tool_driver_and_provenance(self):
         run = json.loads(render_sarif(make_report()))["runs"][0]
         driver = run["tool"]["driver"]
-        self.assertEqual((driver["name"], driver["version"]), ("oss-ai-policy-check", "0.3.0"))
+        self.assertEqual((driver["name"], driver["version"]), ("oss-ai-policy-check", "0.3.1"))
         self.assertTrue(driver["informationUri"].startswith("https://github.com/"))
         self.assertEqual(run["versionControlProvenance"][0]["revisionId"], SHA)
         self.assertEqual(run["results"][0]["properties"]["permalink"],

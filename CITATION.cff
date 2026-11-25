@@ -5,8 +5,8 @@ abstract: "Finds a repository's AI contribution policy and links every cited lin
 type: software
 authors:
   - alias: "Kemal (KarıncaAI)"
-version: 0.3.0
-date-released: 2026-11-22
+version: 0.3.1
+date-released: 2026-11-25
 license: MIT
 repository-code: "https://github.com/KemalG-u/oss-ai-policy-check"
 url: "https://github.com/KemalG-u/oss-ai-policy-check"
