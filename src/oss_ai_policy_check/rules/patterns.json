@@ -20,12 +20,16 @@
     ],
     "soft_verbs": "\\b(?:should|expect(?:s|ed)?|please|encourag\\w+|feel free|free to|appreciat\\w+|prefer\\w*|recommend(?:s|ed)?|ask(?:s|ed)?|responsib\\w+|mindful|careful\\w*|fine|ok|okay|happy|glad|can use|may use|up to you|your call|at your own)\\b"
   },
+  "agent_files": {
+    "paths": "(?-i:(?:^|/)(?:AGENTS|CLAUDE|GEMINI)\\.md$|^(?:\\.github/)?Agents\\.md$)|copilot-instructions|\\.cursorrules|(?:^|/)\\.cursor/rules/|(?:^|/)\\.github/instructions/",
+    "scope": "\\bcontribut\\w+|\\bpull[- ]requests?\\b|\\bPRs?\\b|\\bpatch(?:es)?\\b|\\bsubmi\\w+|\\bissues?\\b|\\bcommits?\\b|\\bAI polic(?:y|ies)\\b|\\bdisclos\\w*"
+  },
   "named": {
     "ai_strict": "\\bAIs?\\b(?!\\s*(?:API|librar|script|player|opponent))|\\bLLMs?\\b|\\bAI-\\w+|(?i:\\b(?:artificial intelligence|large language models?|language models?|ChatGPT|Copilot|Claude|Gemini|generative|machine[- ]generated|tool[- ]generated|chat ?bots?|code assistants?|coding assistants?|assistance tools?)\\b)",
     "broad": "(?i:\\bcontribut(?:ion|e|ing)s?\\b|pull[- ]requests?|\\bPRs?\\b|\\bpatch(?:es)?\\b|\\bcode\\b|\\bsubmi\\w+|\\bmaterial\\b|\\bcontent\\b|\\bdevelopment\\b|(?:use|using|usage)\\s+of\\s+(?:any\\s+(?:and\\s+all\\s+)?|all\\s+)?(?:AI|LLMs?|generative)\\b[^.!?]{0,40}\\bproject\\b)",
     "narrow": "(?i:(?:comments?|repl(?:y|ies)|responses?|messages?|posts?)\\s+(?:on|in|to|for)\\s+(?:\\w+\\s+){0,3}(?:issues?|PRs?|pull[- ]requests?|threads?|discussions?)|(?:(?:pull[- ]requests?|PR|issue|bug|commit|review|discussion|code)\\s+)?(?:descriptions?|comments?|repl(?:y|ies)|responses?|messages?|posts?|communications?|bodies|text|answers?|reports?|discussions?)|\\b(?:in\\s+)?explaining\\s+(?:your|the)\\s+(?:contribution|change)s?|\\b(?:art|artwork|images?|media|videos?|audio|assets|documentation|docs?|translations?|translating|proofreading)\\b)",
     "voice_target": "(?i:descriptions?|comments?|repl(?:y|ies)|responses?|messages?|\\bposts?\\b|communicat\\w+|discussions?|issue (?:text|reports?|bodies|descriptions?)|bug reports?|\\bsecurity reports?|\\breports?\\b|answers?|review (?:comments|replies)|PR (?:bodies|text)|\\bspeak\\b|\\bthink for you\\b)",
-    "media": "(?i:\\b(?:art|artwork|images?|media|videos?|audio|graphics|icons|illustrations?|music|sounds?|assets|logos?|textures?|3d models?)\\b)",
+    "media": "(?i:\\b(?:art(?!\\.?\\s*\\d)|artwork|images?|media|videos?|audio|graphics|icons|illustrations?|music|sounds?|assets|logos?|textures?|3d models?)\\b)",
     "prohibit": "(?i:\\b(?:forbid\\w*|prohibit\\w*|ban(?:s|ned)?|disallow\\w*|unacceptable|refus\\w+|reject\\w*|discourag\\w+|do(?:es)?(?:n't| not)|will not|won't|must not|mustn't|should not|shouldn't|never|not (?:be )?(?:allowed|accepted|permitted|welcome\\w*|tolerated)|no)\\b)",
     "prohibit_negation": "(?i:(?:not|n't|never|no)\\s+(?:\\w+\\s+){0,2}(?:prohibit\\w*|ban(?:s|ned|ning)?\\b|forbid\\w*|disallow\\w*|reject\\w*|object\\w*)|\\bno\\s+(?:blanket\\s+)?(?:ban|prohibition)|not\\s+(?:due to\\s+)?an?\\s+anti-?\\s?AI|not\\s+anti-?\\s?AI)",
     "disclose_negation": "(?i:(?:do|does|did|will|would|could)(?:n't| not)\\s+(?:\\w+\\s+){0,2}(?:require|need|have to|ask|expect|demand)|(?:not|n't|never|no)\\s+(?:be\\s+)?(?:required|necessary|needed|mandatory|expected|obligatory)|no\\s+(?:\\w+\\s+){0,2}need|need not|not (?:be )?disclosed|must not\\b[^.!?]{0,30}disclos)",
@@ -46,7 +50,9 @@
     "historical": "(?i:\\bversion\\s+\\d|\\b(?:previously|formerly|used to|earlier version|superseded)\\b)",
     "degree": "(?i:\\b(?:unreviewed|unvetted|blind(?:ly)?)\\b)",
     "voice_or_noai": "(?i:escriptions?|comments?|repl(?:y|ies)|responses?|messages?|\\bposts?\\b|communicat\\w+|discussions?|issue (?:text|reports?|bodies|descriptions?)|bug reports?|\\bsecurity reports?|\\breports?\\b|answers?|review (?:comments|replies)|PR (?:bodies|text)|\\bspeak\\b|\\bthink for you\\b|\\b(?:no|without)\\s+(?:AI|LLMs?)\\b)",
-    "trailer_ai": "(?i:\\b(?:AI|LLMs?|agents?|assistants?|models?|vendors?|bots?|Copilot|Claude|Assisted-by|Generated[- ](?:by|with)|attribution)\\b)"
+    "trailer_ai": "(?i:\\b(?:AI|LLMs?|agents?|assistants?|models?|vendors?|bots?|Copilot|Claude|Assisted-by|Generated[- ](?:by|with)|attribution)\\b)",
+    "disclosure_word": "(?i:\\bdisclos\\w*|\\bdisclaim\\w*|\\backnowledg\\w*|\\bdeclar\\w*|Assisted-by|\\bAI[- ]assisted\\b|\\battribut\\w*|\\bcredit\\w*|\\btrailers?\\b)",
+    "ai_authored": "(?i:\\b(?:AI|LLM|machine|agent|bot)[- ](?:generated|written|authored|produced|drafted|made|created)\\b|\\b(?:generated|written|authored|produced|drafted|composed|created)\\s+(?:entirely\\s+|fully\\s+|mostly\\s+)?(?:by|with|using)\\s+(?:an?\\s+)?(?:AI|LLMs?|agents?|bots?|language models?|Claude|ChatGPT|Copilot)\\b|\\bAI[- ]?(?:written|generated|authored)\\b)"
   },
   "rules": [
     {
@@ -91,6 +97,9 @@
       "exclude": [
         "attribution is not welcome|No .?Co-Authored-By",
         "(?:do not|don't|never|must not)\\s+(?:\\w+\\s+){0,3}(?:add|include|use|put|append)\\b[^.!?]{0,60}(?:Co-Authored-By|Assisted-by|attribution)"
+      ],
+      "agent_file_require": [
+        "disclosure_word"
       ]
     },
     {
@@ -100,7 +109,7 @@
       "require": [
         "ai_sentence"
       ],
-      "regex": "\\b(?:AI|LLM|agent|Copilot|generative|code assistan)\\w*",
+      "regex": "\\b(?:AI|LLM|Copilot|generative|code assistan)\\w*|\\b(?:AI|coding|autonomous|LLM)[- ]agents?\\b|\\bagents?\\b[^.!?]{0,40}\\b(?:us(?:e|ed|ing)|wrote|written|generated|authored|assisted|involved)\\b|\\b(?:us(?:e|ed|ing)|wrote|written|generated|authored|assisted|involved)\\b[^.!?]{0,40}\\bagents?\\b",
       "forbid": [
         "pointer"
       ],
@@ -118,7 +127,8 @@
       ],
       "require": [
         "trailer_ai"
-      ]
+      ],
+      "agent_file": "exempt"
     },
     {
       "id": "own-voice",
@@ -171,7 +181,11 @@
       "ctx_waives": [
         "negative"
       ],
-      "weak": true
+      "weak": true,
+      "agent_file_require": [
+        "ai_authored"
+      ],
+      "window": 300
     },
     {
       "id": "media-ban",
@@ -181,12 +195,12 @@
         "media",
         "prohibit"
       ],
-      "regex": "\\b(?:AI|LLM)[- ]?(?:generated|made|created|produced)?\\s*[^.!?]{0,20}(?:art|artwork|images?|media|videos?|audio|graphics|icons|illustrations?|music|sounds?|assets|logos?)\\b|\\b(?:art|images?|media|videos?|audio|graphics|assets)\\b[^.!?]{0,40}\\b(?:AI|LLM)[- ]?generated"
+      "regex": "\\b(?:AI|LLM)[- ]?(?:generated|made|created|produced)?\\s*[^.!?]{0,20}(?:art(?!\\.?\\s*\\d)|artwork|images?|media|videos?|audio|graphics|icons|illustrations?|music|sounds?|assets|logos?)\\b|\\b(?:art(?!\\.?\\s*\\d)|images?|media|videos?|audio|graphics|assets)\\b[^.!?]{0,40}\\b(?:AI|LLM)[- ]?generated"
     },
     {
       "id": "agent-restriction",
       "class": "restricted",
-      "regex": "\\b(?:autonomous|unsupervised|fully[- ]automated|automated|agentic)\\s+(?:\\w+\\s+){0,2}(?:agents?|bots?|accounts?|tools|systems|AI)\\b[^.!?]{0,120}\\b(?:not|never|no|ban\\w*|forbid\\w*|prohibit\\w*|refus\\w*|reject\\w*|disallow\\w*)\\b|\\b(?:not|never|no|ban\\w*|forbid\\w*|prohibit\\w*|refus\\w*|reject\\w*|disallow\\w*|do not allow)\\b[^.!?]{0,60}\\b(?:autonomous|unsupervised|fully[- ]automated|agentic)\\s+(?:\\w+\\s+){0,2}(?:agents?|bots?|accounts?|tools|systems)\\b|\\bagents?\\b[^.!?]{0,40}\\b(?:must|may|should|can|are)\\s*(?:not|n't|never)\\s+(?:open|submit|create|file|post|comment|reply|contribute)|\\b(?:AI|LLM)?\\s*(?:review|reviewer|triage)\\s+(?:bots?|agents?|tools?)\\b[^.!?]{0,80}\\b(?:not|never|forbidden|banned|prohibited|disallowed)\\b|\\bautonomous account|\\bwithout human (?:approval|review)|\\bpolicy forbids agents|\\bautomated\\s+(?:AI\\s+)?(?:code\\s+)?review\\w*[^.!?]{0,60}\\b(?:not|never)\\s+(?:permitted|allowed|accepted|welcome\\w*)|\\b(?:agents?|bots?|tools?|AI)\\s+that\\s+(?:autonomously|automatically|independently)\\b[^.!?]{0,80}\\b(?:not|never)\\s+(?:permitted|allowed|accepted|welcome\\w*)|\\b(?:do not|don't|never)\\s+(?:\\w+\\s+){0,3}(?:enable|use|run|request|invoke)\\s+(?:\\w+\\s+){0,2}(?:AI|LLM|Copilot|automated)?\\s*(?:code\\s+)?review\\w*\\s+(?:tools?|bots?|agents?)",
+      "regex": "\\b(?:autonomous|unsupervised|fully[- ]automated|automated|agentic)\\s+(?:\\w+\\s+){0,2}(?:agents?|bots?|accounts?|tools|systems|AI)\\b[^.!?]{0,120}\\b(?:not|never|no|ban\\w*|forbid\\w*|prohibit\\w*|refus\\w*|reject\\w*|disallow\\w*)\\b|\\b(?:not|never|no|ban\\w*|forbid\\w*|prohibit\\w*|refus\\w*|reject\\w*|disallow\\w*|do not allow)\\b[^.!?]{0,60}\\b(?:autonomous|unsupervised|fully[- ]automated|agentic)\\s+(?:\\w+\\s+){0,2}(?:agents?|bots?|accounts?|tools|systems)\\b|\\bagents?\\b[^.!?]{0,40}\\b(?:must|may|should|can|are|is|will)\\s*(?:not|n't|never)\\s+(?:(?:be\\s+)?(?:permitted|allowed)\\s+to\\s+)?(?:open|submit|create|file|post|comment|reply|contribute)|\\b(?:AI|LLM)?\\s*(?:review|reviewer|triage)\\s+(?:bots?|agents?|tools?)\\s+(?:\\w+\\s+){0,3}?(?:(?:are|is|must|may|should|can|will|shall)\\s*(?:not|never|n't)\\b|(?:not|never)\\s+(?:permitted|allowed|accepted|welcome\\w*)|forbidden|banned|prohibited|disallowed)|\\bautonomous account|\\bwithout human (?:approval|review)|\\bpolicy forbids agents|\\bautomated\\s+(?:AI\\s+)?(?:code\\s+)?review\\w*[^.!?]{0,60}\\b(?:not|never)\\s+(?:permitted|allowed|accepted|welcome\\w*)|\\b(?:agents?|bots?|tools?|AI)\\s+that\\s+(?:autonomously|automatically|independently)\\b[^.!?]{0,80}\\b(?:not|never)\\s+(?:permitted|allowed|accepted|welcome\\w*)|\\b(?:do not|don't|never)\\s+(?:\\w+\\s+){0,3}(?:enable|use|run|request|invoke)\\s+(?:\\w+\\s+){0,2}(?:AI|LLM|Copilot|automated)?\\s*(?:code\\s+)?review\\w*\\s+(?:tools?|bots?|agents?)",
       "negate": "prohibit_negation",
       "exclude": [
         "\\b(?:fully|purely|entirely|completely|unattended|unsupervised)\\s+(?:\\w+\\s+){0,2}(?:agent\\w*|autonomous\\w*)\\s+(?:\\w+\\s+){0,1}(?:contributions?|PRs?|pull requests?|submissions?)\\b|\\bcontributions?\\s+(?:from|by)\\s+(?:\\w+\\s+){0,2}(?:fully|purely|entirely|completely|unattended|unsupervised)\\s+(?:\\w+\\s+){0,2}(?:agents?|bots?)\\b"
@@ -195,7 +209,16 @@
     {
       "id": "contribution-limit",
       "class": "restricted",
-      "regex": "\\b(?:not|never|no|don'?t|avoid|forbid\\w*|prohibit\\w*|ban\\w*|disallow\\w*|reject\\w*|refus\\w*|closed|humans?\\s+only|for\\s+humans)\\b[^.!?]{0,120}good[- ]first[- ]?issues?|good[- ]first[- ]?issues?[^.!?]{0,120}\\b(?:not|never|no|don'?t|avoid|forbid\\w*|prohibit\\w*|ban\\w*|disallow\\w*|reject\\w*|refus\\w*|closed|humans?\\s+only|for\\s+humans)\\b|(?:unvouched|not vouched|aren't vouched|without[^.!?]{0,40}vouch|vouch[^.!?]{0,40}first)[^.!?]{0,180}(?:close|PR|pull request)|(?:DeepSeek|Grammarly)[^.!?]{0,160}(?:not|ban|prohibit|forbid)|(?:not|ban|prohibit|forbid)[^.!?]{0,160}(?:DeepSeek|Grammarly)|(?:no|not|don't|never)\\b[^.!?]{0,40}\\b(?:automatic|automated|drive-by|unsolicited|shotgun)\\s+(?:\\w+\\s+){0,2}(?:PRs?|pull requests?)|\\b(?:only|solely)\\b[^.!?]{0,60}\\b(?:accepted|approved|triaged|assigned|help[- ]wanted)\\s+issues|\\b(?:instead of|rather than|in lieu of)\\s+(?:\\w+\\s+){0,3}(?:pull requests?|PRs?|patches|code)\\b[^.!?]{0,100}\\b(?:issue|prompt)|\\b(?:open|file|submit|create|write|send)\\s+(?:an?\\s+)?issue\\s+(?:with|containing|describing|including)[^.!?]{0,60}\\b(?:prompt|instruction)|\\b(?:don't|do not|not|no longer|aren't)\\s+(?:accept|accepting|open|take|taking)\\s+(?:\\w+\\s+){0,3}(?:outside|external|community|public)\\s+(?:\\w+\\s+){0,2}(?:pull requests?|PRs|contributions)|\\b(?:only|solely)\\b[^.!?]{0,80}\\bissues?\\b[^.!?]{0,60}\\b(?:marked|labell?ed|flagged)\\b[^.!?]{0,30}\\b(?:accepted|approved|triaged|help[- ]wanted)\\b|\\bonly\\b[^.!?]{0,40}\\bassistively\\b|\\bassistively\\b[^.!?]{0,20}\\bonly\\b|(?:limited|small|minimal|sporadic)\\s+(?:cases|amounts?)\\b(?:e\\.g\\.|[^.!?]){0,120}\\bautocomplet\\w+|\\bonly\\b(?:e\\.g\\.|[^.!?]){0,40}\\bautocomplet\\w+|\\bautocomplet\\w+\\s+only\\b|\\bnon-?(?:accepted|approved|triaged)\\s+issues\\b|\\b(?:must|should|shall)\\s+not\\s+(?:be\\s+)?disclos\\w*|\\b(?:for|on|against)\\s+(?:\\w+\\s+){0,3}issues?\\s+(?:that|which)\\s+(?:have|has|are|is)\\s+(?:not|n't)\\b[^.!?]{0,40}\\b(?:accepted|approved|triaged|marked|assigned)\\b"
+      "regex": "\\b(?:not|never|no|don'?t|avoid|forbid\\w*|prohibit\\w*|ban\\w*|disallow\\w*|reject\\w*|refus\\w*|closed|humans?\\s+only|for\\s+humans)\\b[^.!?]{0,120}good[- ]first[- ]?issues?|good[- ]first[- ]?issues?[^.!?]{0,120}\\b(?:not|never|no|don'?t|avoid|forbid\\w*|prohibit\\w*|ban\\w*|disallow\\w*|reject\\w*|refus\\w*|closed|humans?\\s+only|for\\s+humans)\\b|(?:unvouched|not vouched|aren't vouched|without[^.!?]{0,40}vouch|vouch[^.!?]{0,40}first)[^.!?]{0,180}(?:close|PR|pull request)|(?:DeepSeek|Grammarly)[^.!?]{0,160}\\b(?:not|ban\\w*|prohibit\\w*|forbid\\w*)\\b|\\b(?:not|ban\\w*|prohibit\\w*|forbid\\w*)\\b[^.!?]{0,160}(?:DeepSeek|Grammarly)|(?:no|not|don't|never)\\b[^.!?]{0,40}\\b(?:automatic|automated|drive-by|unsolicited|shotgun)\\s+(?:\\w+\\s+){0,2}(?:PRs?|pull requests?)|\\b(?:only|solely)\\b[^.!?]{0,60}\\b(?:accepted|approved|triaged|assigned|help[- ]wanted)\\s+issues|\\b(?:instead of|rather than|in lieu of)\\s+(?:\\w+\\s+){0,3}(?:pull requests?|PRs?|patches|code)\\b[^.!?]{0,100}\\b(?:issue|prompt)|\\b(?:open|file|submit|create|write|send)\\s+(?:an?\\s+)?issue\\s+(?:with|containing|describing|including)[^.!?]{0,60}\\b(?:prompt|instruction)|\\b(?:don't|do not|not|no longer|aren't)\\s+(?:accept|accepting|open|take|taking)\\s+(?:\\w+\\s+){0,3}(?:outside|external|community|public)\\s+(?:\\w+\\s+){0,2}(?:pull requests?|PRs|contributions)|\\b(?:only|solely)\\b[^.!?]{0,80}\\bissues?\\b[^.!?]{0,60}\\b(?:marked|labell?ed|flagged)\\b[^.!?]{0,30}\\b(?:accepted|approved|triaged|help[- ]wanted)\\b|\\bonly\\b[^.!?]{0,40}\\bassistively\\b|\\bassistively\\b[^.!?]{0,20}\\bonly\\b|(?:limited|small|minimal|sporadic)\\s+(?:cases|amounts?)\\b(?:e\\.g\\.|[^.!?]){0,120}\\bautocomplet\\w+|\\bonly\\b(?:e\\.g\\.|[^.!?]){0,40}\\bautocomplet\\w+|\\bautocomplet\\w+\\s+only\\b|\\bnon-?(?:accepted|approved|triaged)\\s+issues\\b|\\b(?:must|should|shall)\\s+not\\s+(?:be\\s+)?disclos\\w*|\\b(?:for|on|against)\\s+(?:\\w+\\s+){0,3}issues?\\s+(?:that|which)\\s+(?:have|has|are|is)\\s+(?:not|n't)\\b[^.!?]{0,40}\\b(?:accepted|approved|triaged|marked|assigned)\\b"
+    },
+    {
+      "id": "outside-pr-closed",
+      "class": "restricted",
+      "regex": "\\bwe\\s+accept\\s+(?:only\\s+)?issues?,?\\s+(?:and\\s+)?not\\s+(?:pull\\s+requests?|PRs?|patches)\\b|\\b(?:pull\\s+requests?|PRs?)\\b[^.!?]{0,60}\\b(?:are|is)\\s+(?:opened|created|submitted|made|authored)\\s+by\\s+(?:the\\s+)?(?:\\w+\\s+){0,2}maintainers?\\b[^.!?]{0,20}\\bonly\\b|\\bonly\\s+(?:the\\s+)?(?:\\w+\\s+){0,2}maintainers?\\s+(?:can|may|are\\s+allowed\\s+to)\\s+(?:open|create|submit)\\s+(?:\\w+\\s+){0,2}(?:pull\\s+requests?|PRs?)\\b|\\b(?:pull\\s+requests?|PRs?)\\s+from\\s+(?:anyone|everyone|others?|outsiders|non-maintainers|external\\s+contributors)\\b[^.!?]{0,40}\\b(?:closed|rejected|declined|not\\s+(?:accepted|merged))\\b|\\b(?:do\\s+not|don't|no\\s+longer|aren't|are\\s+not)\\s+(?:accept|accepting|take|taking)\\s+(?:\\w+\\s+){0,3}(?:outside|external|third[- ]party)\\s+(?:\\w+\\s+){0,2}(?:pull\\s+requests?|PRs?|contributions|patches)\\b",
+      "exclude": [
+        "\\b(?:unless|except|until)\\b"
+      ],
+      "ungated": true
     },
     {
       "id": "welcome",
@@ -209,21 +232,34 @@
       ],
       "exclude": [
         "\\b(?:not|n't)\\s+(?:be\\s+)?(?:welcome|allowed|accepted|permitted|acceptable)\\b"
-      ]
+      ],
+      "agent_file": "exempt"
     },
     {
       "id": "agent-file-no-posting",
       "class": "restricted",
       "paths": "(?:^|/)(?:AGENTS|CLAUDE|GEMINI|AGENT_POLICY|Agents)\\.md$|copilot-instructions|\\.cursorrules",
-      "regex": "\\b(?:refuse|decline|do not|don't|never|must not)\\s+(?:\\w+\\s+){0,3}(?:open|create|submit|file)\\s+(?:\\w+\\s+){0,2}(?:pull requests?|PRs?|issues?)\\b|\\bnever\\s+post\\s+to\\s+GitHub|\\bon\\s+(?:the\\s+user's|a\\s+user's|their)\\s+behalf\\b[^.!?]{0,60}\\b(?:not|never)\\b",
+      "regex": "(?<!\\bthen\\s)(?<!\\boften\\s)(?<!\\busually\\s)(?<!\\bsometimes\\s)(?<!\\bwho\\s)(?<!\\bthey\\s)(?<!\\bpeople\\s)(?<!\\bfolks\\s)(?<!\\bsomeone\\s)(?<!\\banyone\\s)\\b(?:refuse|decline|do not|don't|never|must not)\\s+(?:\\w+\\s+){0,3}(?:open|create|submit|file)\\s+(?:\\w+\\s+){0,2}(?:pull requests?|PRs?|issues?)\\b|\\bnever\\s+post\\s+to\\s+GitHub|\\bon\\s+(?:the\\s+user's|a\\s+user's|their)\\s+behalf\\b[^.!?]{0,60}\\b(?:not|never)\\b",
       "exclude": [
-        "\\b(?:without|for|about|labell?ed|unless|until|if|when|before|after|that only)\\b"
+        "\\b(?:without|for|about|labell?ed|unless|until|if|when|before|after|that only|against|into|onto|targeting)\\b"
       ],
       "ungated": true,
       "forbid_paragraph": [
         "\\bautonom\\w+|\\bfully\\b"
       ],
-      "weak": true
+      "weak": true,
+      "agent_file": "exempt"
+    },
+    {
+      "id": "agent-pr-prohibited",
+      "class": "restricted",
+      "paths": "(?:^|/)(?:AGENTS|CLAUDE|GEMINI|AGENT_POLICY|Agents)\\.md$|copilot-instructions|\\.cursorrules",
+      "regex": "\\b(?:prohibits?|forbids?|bans?|disallows?|does\\s+not\\s+(?:allow|permit)|doesn't\\s+(?:allow|permit))\\s+(?:you|agents?|AI(?:\\s+(?:agents?|assistants?|tools?))?|assistants?|bots?)\\s+(?:from\\s+)?(?:\\w+\\s+){0,2}(?:open(?:ing)?|creat(?:e|ing)|submit(?:ting)?|fil(?:e|ing))\\s+(?:\\w+\\s+){0,2}(?:pull\\s+requests?|PRs?)\\b|\\b(?:agents?|AI\\s+(?:agents?|assistants?|tools?)|assistants?|bots?|you)\\s+(?:must\\s+not|may\\s+not|shall\\s+not|should\\s+not|cannot|can't|(?:are|is)\\s+not\\s+(?:allowed|permitted)\\s+to)\\s+(?:\\w+\\s+){0,2}(?:open|create|submit|file)\\s+(?:\\w+\\s+){0,2}(?:pull\\s+requests?|PRs?)\\b|\\b(?:do\\s+not|don't|never)\\s+(?:open|create|submit|file)\\s+(?:\\w+\\s+){0,2}(?:pull\\s+requests?|PRs?)\\s+on\\s+behalf\\s+of\\b",
+      "exclude": [
+        "\\b(?:unless|until|except|without|against|into|onto|targeting)\\b"
+      ],
+      "ungated": true,
+      "agent_file": "exempt"
     }
   ]
 }

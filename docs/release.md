@@ -53,6 +53,8 @@ nothing is published. Approve the `publish` job in the Actions tab (the environm
 Afterwards:
 
 - `uvx oss-ai-policy-check --version` in a clean shell prints the new version.
+- The PyPI file pages show a provenance attestation (PEP 740); the workflow passes `attestations: true` to
+  `pypa/gh-action-pypi-publish`, which signs the files through the same Trusted Publishing identity.
 - Create a GitHub Release from the tag (Releases, "Draft a new release", choose the tag, paste the changelog
   section).
 - The GitHub Action needs no extra step: `uses: KemalG-u/oss-ai-policy-check@v0.3.0` installs the code at that

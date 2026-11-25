@@ -14,9 +14,11 @@ sends the AI-policy paragraphs of every repository to Claude. Every model respon
 estimated cost at list price (Opus 5.5: $4 in / $20 out per MTok). The deterministic rules stay the default.
 
 Labels are pinned to the commit SHAs in gold.jsonl (scan date 2026-11-22); the tool is always run at
-that SHA, never at HEAD. For rows with source "org" the repository SHA is taken from the note
-"(repo sha xxxxxxxxxx)" and the owner's `.github` repository is pinned to the SHA in the row (or to
-org_pins.json for repositories whose own text decides the verdict).
+that SHA, never at HEAD. For rows with source "org" exactly one note marker says which SHA `commit_sha` is:
+"(repo sha x)" means commit_sha is the owner's `.github` SHA (gold.jsonl), "(org sha x)" means commit_sha is the
+repository's (gold4 holdout.jsonl); neither or both is an error (see org_row_shas). org_pins.json pins owners whose
+own text decides the verdict.
+--gold PATH measures another label file.
 
 Every GitHub response (API JSON and raw bytes, including 404s) is stored under `_cache/`, so a rerun
 is offline and a discovery change only fetches files it newly asks for. GET only. GITHUB_TOKEN is
@@ -58,7 +60,7 @@ from oss_ai_policy_check.contract import NEEDS_REVIEW, NO_POLICY_FOUND, VERDICTS
 from oss_ai_policy_check.fetch import FetchError, NotFoundError, default_client, fetch_snapshot  # noqa: E402
 
 SPLIT_SEED = "oss-gold-v1:"
-GOLD = HERE / "gold.jsonl"
+GOLD = HERE / "gold.jsonl"  # --gold PATH measures another label file (e.g. a blind set kept outside the repository)
 PINS = HERE / "org_pins.json"
 
 
@@ -80,21 +82,64 @@ def split_gold(rows: list[dict]) -> dict[str, str]:
     return out
 
 
+class GoldFormatError(ValueError):
+    """A gold row cannot be pinned unambiguously; measuring it would give a wrong number, so stop."""
+
+
+_SHA_NOTE = {
+    "repo": re.compile(r"\(repo sha ([0-9a-f]{7,40})\)"),
+    "org": re.compile(r"\(org sha ([0-9a-f]{7,40})\)"),
+}
+
+
+def org_row_shas(row: dict) -> tuple[str, str]:
+    """(repository sha, owner `.github` sha) of a row with source "org".
+
+    The `commit_sha` field means different things in the two label files, and reading the wrong one pins the
+    organization policy to a repository commit (24 Nov 2026: 37 of 60 instead of the true 42 of 60 on gold4):
+      gold.jsonl           commit_sha = owner `.github` SHA, the note carries "(repo sha <hex>)"
+      gold4 holdout.jsonl  commit_sha = repository SHA,       the note carries "(org sha <hex>)"
+    Exactly one of the two notes must be present; neither or both is an error, never a guess."""
+    marks = {kind: rx.search(row.get("note", "")) for kind, rx in _SHA_NOTE.items()}
+    if marks["repo"] and marks["org"]:
+        raise GoldFormatError(f"{row['repo']}: note carries both '(repo sha ...)' and '(org sha ...)'; "
+                              f"cannot tell which SHA commit_sha is")
+    if marks["repo"]:
+        return marks["repo"].group(1), row["commit_sha"]
+    if marks["org"]:
+        return row["commit_sha"], marks["org"].group(1)
+    raise GoldFormatError(f"{row['repo']}: org row without '(repo sha <hex>)' or '(org sha <hex>)' in the note; "
+                          f"commit_sha alone cannot say whether it is the repository or the owner .github commit "
+                          f"(reading it as the wrong one gives a wrong measurement)")
+
+
 def target_ref(row: dict) -> str:
-    """The commit of the repository itself (for org rows the row SHA is the org repo's)."""
+    """The commit of the repository itself (for org rows see org_row_shas)."""
     if row["source"] == "org":
-        found = re.search(r"\(repo sha ([0-9a-f]{7,40})\)", row["note"])
-        if found:
-            return found.group(1)
+        return org_row_shas(row)[0]
     return row["commit_sha"]
 
 
 def org_pins(rows: list[dict]) -> dict[str, str]:
+    """owner -> owner `.github` SHA. Two rows of one owner must agree; a row overrides org_pins.json."""
     pins = {k: v for k, v in json.loads(PINS.read_text(encoding="utf-8")).items() if not k.startswith("_")}
+    from_rows: dict[str, str] = {}
     for row in rows:
         if row["source"] == "org":
-            pins[row["repo"].split("/")[0]] = row["commit_sha"]
+            owner, sha = row["repo"].split("/")[0], org_row_shas(row)[1]
+            if from_rows.setdefault(owner, sha) != sha:
+                raise GoldFormatError(f"{row['repo']}: owner {owner} is pinned to two different .github SHAs")
+    pins.update(from_rows)
     return pins
+
+
+def validate_gold(rows: list[dict]) -> None:
+    """Fail before any fetch: every org row must resolve, and no two repositories may share one row."""
+    org_pins(rows)
+    repos = [row["repo"] for row in rows]
+    duplicates = sorted({r for r in repos if repos.count(r) > 1})
+    if duplicates:
+        raise GoldFormatError(f"duplicate repositories in the gold file: {', '.join(duplicates)}")
 
 
 class CachingClient:
@@ -391,6 +436,8 @@ def print_llm_usage(llm, cache: LlmCache, repos: int) -> None:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--gold", type=Path, default=GOLD, help="label file (default: gold.jsonl); see org_row_shas for "
+                    "the two commit_sha conventions of org rows")
     ap.add_argument("--split", choices=("dev", "holdout", "all"), default="dev")
     ap.add_argument("--offline", action="store_true", help="never touch the network; cache misses become read errors")
     ap.add_argument("--cache", type=Path, default=HERE / "_cache")
@@ -412,7 +459,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.cv:
         args.split = "all"
 
-    rows = load_gold()
+    rows = load_gold(args.gold)
+    try:
+        validate_gold(rows)
+    except GoldFormatError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
     split = split_gold(rows)
     chosen = [r for r in rows if args.split == "all" or split[r["repo"]] == args.split]
     client = CachingClient(args.cache, org_pins(rows), offline=args.offline)

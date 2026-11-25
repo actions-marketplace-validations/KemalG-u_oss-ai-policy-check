@@ -5,6 +5,54 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Project health files: `CODE_OF_CONDUCT.md` (Contributor Covenant 2.1) and `CITATION.cff`; an OpenSSF
+  Scorecard workflow (`.github/workflows/scorecard.yml`, results published to the Scorecard API); README badges
+  for CI, PyPI and Scorecard. The release workflow now states `attestations: true` (PEP 740) for the PyPI upload.
+- Rule `agent-pr-prohibited` (`restricted`, agent instruction files only): a sentence that bars the agent from
+  opening pull requests (conda: "prohibits you from opening pull requests"; "agents must not open pull requests";
+  "do not open PRs on behalf of the user"). The pipeline is an agent, so this is a hard limit. Branch targets
+  ("never open a PR against main") and conditions ("without", "unless") stay out. 31 cases now (conda added).
+- Rule `outside-pr-closed` (`restricted`): pull requests from outside the maintainers are closed ("We accept
+  issues, not pull requests", "pull requests are opened by the maintainers only", "A pull request from anyone else is
+  closed", "We do not accept external code contributions or pull requests"). It needs no AI word.
+- `tests/golden/agent_file_cases.json` and `tests/test_agent_file_cases.py`: 31 short real excerpts (repository,
+  pinned commit, source lines) with the verdict they must get, seven repositories that were wrongly reported as
+  restricted or banned, two closures that were missed and 21 real limits that must not be lost. `gold.jsonl` is
+  unchanged.
+
+### Fixed
+
+- Agent instruction files (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, Copilot and Cursor instructions) no longer turn
+  operating instructions for the agent into a restriction on contributors. `patterns.json` has a new `agent_files`
+  entry; a rule reads such a file only in a paragraph that names contributing, `disclosure` and `ai-voice-ban` ask
+  for more there (`agent_file_require`), and `attribution-ban`, `agent-file-no-posting` and `welcome` stay
+  `agent_file: "exempt"`. Seen on F3-Nation/f3-nation, career-ops-hq/career-ops, shuxiachai/academic-commercialization-agent
+  and modelcontextprotocol/servers (25 Nov 2026).
+- `agent-file-no-posting` ignores an instruction that only names the target of a pull request ("Never open a PR
+  against `main`", "Do not submit a PR against a closed issue"); "Never open a pull request." still matches.
+- `agent-restriction` reads "the AI agent is not permitted to create pull requests", and its review-bot alternative
+  needs the negation to be the predicate of the bot ("If a review bot keeps raising the same false positive, add a
+  \"do not flag\" entry" is a maintainer workflow, F3-Nation).
+- `media-ban`: "Art. 5" is an article number, not artwork (Cygnux-Labs/Tracekit, EU AI Act note).
+- `contribution-limit`: the DeepSeek/Grammarly alternative matched "not" inside "another" (README requirement list of
+  DilawarShafiq/nietzschian-debugger); it now needs whole words.
+- `ai-voice-ban` (new `window` key): its AI term, voice target, authoring verb and prohibition must lie within
+  300 characters, so a run-on Markdown sentence full of file names is no longer a voice ban (neomjs/neo).
+- `template-ai-prompt`: the bare word "agent" in a pull request template ("the agent still never holds a signing
+  key") is a product word, not a question about AI use; "AI agent", "agent ... used/wrote" still match.
+- `agent-file-no-posting` no longer treats a sentence that narrates what other people do as a restriction on the
+  agent ("People often say this and then never open a pull request", pylint `AGENTS.md`). Imperative and modal
+  instructions ("Never open a pull request.", "Do not open pull requests or issues.", "Agents must never open ...")
+  are still read as restrictions.
+- `tests/golden/run_gold.py` reads the SHAs of `source: org` rows from the note marker that says what `commit_sha`
+  is (`(repo sha ...)` in `gold.jsonl`, `(org sha ...)` in the gold4 file) and stops with an error when a row has
+  neither or both, instead of pinning the organization `.github` repository to a repository commit. New option
+  `--gold PATH` measures another label file.
+
 ## [0.3.0] - 2026-11-22
 
 ### Added

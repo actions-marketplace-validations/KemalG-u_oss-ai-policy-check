@@ -268,6 +268,19 @@ class _Rules:
       demote_on         names from `named`: a sentence that matches one still fires, but as `demote_to`
                         (default "restricted") with confidence "low" instead of the rule's own class. A ban
                         that carries a narrowing qualifier ("unreviewed", "fully", "unless") is not a full ban.
+      window            the `require` terms must all occur within this many characters of each other: a loose
+                        co-occurrence rule says nothing when its terms are a long run-on sentence apart (a
+                        Markdown line full of file names and code spans)
+      agent_file        "exempt": the rule also runs on every paragraph of an agent instruction file. Every other
+                        rule runs there only on a paragraph that speaks about contributing (see below).
+      agent_file_require  names from `named` that a sentence in an agent instruction file must match in addition
+                        to `require` (a narrower reading of the same rule for that kind of file)
+    Agent instruction files (the top-level `agent_files.paths`: AGENTS.md, CLAUDE.md, GEMINI.md, Copilot and Cursor
+    instructions) tell the agent working in the repository how to build, test, branch and commit. That is operating
+    procedure for the agent, not the repository's rule for outside contributors. A rule therefore fires there only
+    when the paragraph names contributing at all (`agent_files.scope`: contributions, pull requests, patches,
+    issues, an AI policy), and the rules a trailer or agent-posting instruction needs are marked `agent_file:
+    "exempt"` because those instructions are the restriction (an AI attribution trailer ban binds every author).
     `named` entries carry their own inline flags; the special name `ai_sentence` is the AI term. The special name
     `narrowing_qualifiers` is the shared qualifier list: the top-level `narrowing_qualifiers` array of regexes
     (an entry "@name" includes the named pattern `name`)."""
@@ -278,6 +291,9 @@ class _Rules:
         self.named["ai_sentence"] = self.ai
         parts = [(data["named"][x[1:]] if x.startswith("@") else x) for x in data.get("narrowing_qualifiers", [])]
         self.named["narrowing_qualifiers"] = re.compile("|".join(f"(?:{x})" for x in parts) or r"(?!)", re.I)
+        agent = data.get("agent_files", {})
+        self.agent_paths = re.compile(agent["paths"], re.I) if agent.get("paths") else None
+        self.agent_scope = re.compile(agent["scope"], re.I) if agent.get("scope") else None
         review = data.get("review_cue", {})
         self.review_paths = re.compile(review["paths"], re.I) if review.get("paths") else None
         self.review_cue = re.compile(review["cue"], re.I) if review.get("cue") else None
@@ -305,17 +321,49 @@ class _Rules:
             return bool(self.review_cue and self.review_cue.search(paragraph))
         return True
 
+    def agent_file(self, path: str) -> bool:
+        """True for an agent instruction file: its text is operating procedure for the agent, not contributor policy."""
+        return bool(self.agent_paths and self.agent_paths.search(path))
+
+    def in_scope(self, rule: Mapping[str, Any], path: str, paragraph: str) -> bool:
+        """May `rule` look at `paragraph` of `path`? Everywhere yes, except in an agent instruction file, where only
+        a paragraph that names contributing is read (unless the rule is `agent_file: "exempt"`)."""
+        if rule.get("agent_file") == "exempt" or not self.agent_file(path) or not self.agent_scope:
+            return True
+        return bool(self.agent_scope.search(paragraph))
+
     def any_ungated(self, path: str) -> bool:
         return any(r.get("ungated") and (paths is None or paths.search(path)) for r, _, paths, _, _, _ in self.rules)
 
+    def _within(self, sentence: str, names: list[str], window: int) -> bool:
+        """Is there a stretch of at most `window` characters that holds a match of every named pattern?"""
+        points = sorted((m.start(), n) for n in names for m in self.named[n].finditer(sentence))
+        wanted = set(names)
+        for i, (start, name) in enumerate(points):
+            seen = {name}
+            for position, other in points[i + 1:]:
+                if position - start > window:
+                    break
+                seen.add(other)
+                if seen == wanted:
+                    return True
+            if seen == wanted:  # a single name (or all names at one point)
+                return True
+        return False
+
     def judge(self, rule: Mapping[str, Any], excludes: list[re.Pattern[str]], sentence: str,
-              prohibitive: bool = False, demote_all: bool = False) -> str | None:
+              prohibitive: bool = False, demote_all: bool = False, agent_file: bool = False) -> str | None:
         """None: the sentence is not a signal of this rule. "ok": it is. "demote": it is, but carries a
         narrowing qualifier, so the rule's class is downgraded and the evidence is low confidence."""
         if any(x.search(sentence) for x in excludes):
             return None
         waived = rule.get("ctx_waives", []) if prohibitive else []
         if any(not self.named[n].search(sentence) for n in rule.get("require", []) if n not in waived):
+            return None
+        if rule.get("window") and not self._within(sentence, [n for n in rule.get("require", []) if n not in waived],
+                                                   rule["window"]):
+            return None
+        if agent_file and any(not self.named[n].search(sentence) for n in rule.get("agent_file_require", [])):
             return None
         if any(self.named[n].search(sentence) for n in rule.get("forbid", [])):
             return None
@@ -580,11 +628,14 @@ def classify_documents(documents: Mapping[str, str], patterns: dict[str, Any] | 
                     continue
                 if any(x.search(paragraph) for x in paragraph_forbids):
                     continue
+                if not rules.in_scope(rule, path, paragraph):
+                    continue
                 hedged = any(x.search(text) for x in rules.demote_document[rule["id"]])
                 for match in regex.finditer(paragraph):
                     left = max((x for x in bounds if x <= match.start()), default=0)
                     right = min((x for x in bounds if x >= match.end()), default=len(paragraph))
-                    verdict = rules.judge(rule, excludes, paragraph[left:right], prohibitive[start], hedged)
+                    verdict = rules.judge(rule, excludes, paragraph[left:right], prohibitive[start], hedged,
+                                          rules.agent_file(path))
                     if verdict is None:
                         continue
                     demoted = verdict == "demote"

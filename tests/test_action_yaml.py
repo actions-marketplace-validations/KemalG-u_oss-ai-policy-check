@@ -139,7 +139,7 @@ class ActionFilesTest(unittest.TestCase):
         return [ACTION, *_workflow_files()]
 
     def test_expected_workflows_exist(self):
-        for name in ("ci.yml", "self-test.yml", "release.yml"):
+        for name in ("ci.yml", "self-test.yml", "release.yml", "scorecard.yml"):
             self.assertTrue((WORKFLOWS / name).is_file(), name)
         self.assertTrue(DEPENDABOT.is_file())
 
@@ -164,7 +164,8 @@ class ActionFilesTest(unittest.TestCase):
     def test_no_untrusted_expression_in_run(self):
         for path in self._files():
             text = path.read_text(encoding="utf-8")
-            self.assertTrue(run_blocks(text), f"{path.name}: no run: found, scanner is blind")
+            if path.name != "scorecard.yml":  # the Scorecard workflow only has uses: steps
+                self.assertTrue(run_blocks(text), f"{path.name}: no run: found, scanner is blind")
             self.assertEqual(unsafe_run_expressions(text), [], path.name)
 
     def test_workflows_default_to_read_only_contents(self):
@@ -172,8 +173,14 @@ class ActionFilesTest(unittest.TestCase):
             text = path.read_text(encoding="utf-8")
             self.assertRegex(text, r"(?m)^permissions:\n  contents: read\n", path.name)
             self.assertNotRegex(text, r"(?m)^\s+(?:contents|security-events|actions): write", path.name)
-            if path.name != "release.yml":
+            if path.name not in ("release.yml", "scorecard.yml"):
                 self.assertNotRegex(text, r"(?m)^\s+id-token: write", path.name)
+
+    def test_scorecard_workflow_is_least_privilege_and_publishes(self):
+        text = (WORKFLOWS / "scorecard.yml").read_text(encoding="utf-8")
+        self.assertEqual(len(re.findall(r"(?m)^\s+id-token: write", text)), 1)
+        self.assertIn("publish_results: true", text)
+        self.assertRegex(text, r"ossf/scorecard-action@[0-9a-f]{40}")
 
     def test_release_workflow_gives_id_token_only_to_the_publish_job(self):
         text = (WORKFLOWS / "release.yml").read_text(encoding="utf-8")

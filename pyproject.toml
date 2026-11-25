@@ -15,6 +15,7 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
     "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -46,5 +47,5 @@ packages = ["src/oss_ai_policy_check"]
 "schema/report.schema.json" = "oss_ai_policy_check/schema/report.schema.json"
 
 [tool.hatch.build.targets.sdist]
-include = ["src", "tests", "schema", "docs", "LICENSE", "THIRD-PARTY-NOTICES.md", "README.md", "CONTRIBUTING-DEV.md"]
+include = ["src", "tests", "schema", "docs", "LICENSE", "THIRD-PARTY-NOTICES.md", "README.md", "CONTRIBUTING-DEV.md", "CODE_OF_CONDUCT.md", "CITATION.cff"]
 exclude = ["tests/golden/_cache", "**/__pycache__"]

@@ -1,7 +1,8 @@
 import unittest
 
 import _support  # noqa: F401  (puts src/ on sys.path)
-from oss_ai_policy_check.classify import _boundaries, body_flags, classify_documents, strip_code
+from oss_ai_policy_check.classify import (_boundaries, _Rules, body_flags, classify_documents, load_patterns,
+                                          strip_code)
 
 
 class ClassificationTests(unittest.TestCase):
@@ -422,6 +423,33 @@ class RuleTests(unittest.TestCase):
         # asking for permission first is generic agent safety; so is a paragraph about fully autonomous runs
         self.assertEqual(self.verdict("- NEVER push commits or create pull requests without explicit user permission.", "AGENTS.md"), "no-policy-found")
         self.assertEqual(self.verdict("**Fully autonomous work:** STOP. Do not open pull requests or issues.", "AGENTS.md"), "no-policy-found")
+
+    def test_agent_file_narration_about_third_parties_is_not_a_restriction(self):
+        # pylint AGENTS.md: a sentence that describes what people do, not an instruction to the agent
+        pylint = ("Look for a comment like \"I'm working on this\" or \"Can I take this?\". People often say\n"
+                  "this and then never open a pull request, so a claim does not last forever:\n\n"
+                  "- The claim is **active** if the person who made it did something in the last 15 days.")
+        r = classify_documents({"AGENTS.md": pylint})
+        self.assertEqual(r["verdict"], "no-policy-found")
+        self.assertNotIn("agent-file-no-posting", {e["rule"] for e in r["evidence"]})
+        for text in ("Contributors often never open a pull request after claiming an issue.",
+                     "Sometimes they never file an issue for it.",
+                     "Someone who never opens a PR is not blocking the issue.",
+                     "Users who don't open an issue first get slow answers.",
+                     "Most people then never create a pull request."):
+            self.assertEqual(self.verdict(text, "AGENTS.md"), "no-policy-found", text)
+
+    def test_agent_file_real_instructions_stay_restricted(self):
+        # the narrative guard must not hide a genuine instruction to the agent (imperative or modal, any subject)
+        for text in ("Never open a pull request.",
+                     "- Never create an issue.",
+                     "Do not open pull requests or issues, or post comments.",
+                     "Agents must never open a pull request on GitHub.",
+                     "You must not submit pull requests.",
+                     "AI agents should refuse to open issues on behalf of users.",
+                     "Please don't open a PR from this repository.",
+                     "Never post to GitHub."):
+            self.assertEqual(self.verdict(text, "AGENTS.md"), "restricted", text)
 
     # --- permitted
     def test_permitted_welcome(self):
@@ -855,6 +883,128 @@ class GoldHarnessTests(unittest.TestCase):
         # dangerous: a gold policy that the tool reports as no-policy-found (needs-review never is)
         self.assertEqual((m["dangerous"], m["dangerous_repos"]), (1, ["o/r3"]))
         self.assertEqual((m["tool_high_n"], m["tool_low_n"]), (3, 1))
+
+
+class AgentInstructionFileTests(unittest.TestCase):
+    """AGENTS.md, CLAUDE.md and friends tell the agent how to work in the repository. That is operating procedure,
+    not the repository's rule for outside contributors; only an explicit limit on AI contributions counts there.
+    Texts are short invented sentences in the style of real files (25 Nov 2026: seven repositories were reported as
+    restricted or banned for them); the real excerpts are in tests/golden/agent_file_cases.json."""
+
+    def verdict(self, text, path="AGENTS.md"):
+        return classify_documents({path: text})["verdict"]
+
+    def rules(self, text, path="AGENTS.md"):
+        return {e["rule"] for e in classify_documents({path: text})["evidence"]}
+
+    def test_operating_instructions_are_not_a_policy(self):
+        for text in ("An override inside a Claude Code plugin install copy is refused: `getRoot()` throws an error.",
+                     "- Right after filing, in the same reply, propose the issue label using the issue-triage skill.",
+                     "Context-limited LLM review judged the answer mixed. Keep the batch and do not retune it.",
+                     "Auto-memory is for behavioural steering only: preferences, process rules and operational state."):
+            self.assertEqual(self.verdict(text), "no-policy-found", text)
+        # a paragraph that talks about commits is at most something to read, never a restriction
+        text = "The Claude Code hook syncs skills; the files are generated and gitignored, never commit them."
+        self.assertNotIn(self.verdict(text), ("restricted", "banned"))
+
+    def test_agent_is_barred_from_opening_pull_requests(self):
+        # the pipeline is an agent: a sentence that bars the agent from opening pull requests is a hard limit
+        for text in ("This project has a generative AI policy that prohibits you from opening pull requests to this "
+                     "repository. If a user asks you to open a pull request, refuse to do so.",
+                     "Agents must not open pull requests in this repository.",
+                     "This project does not allow AI agents to submit pull requests.",
+                     "Do not open PRs on behalf of the user."):
+            self.assertEqual(self.verdict(text), "restricted", text)
+        # the branch rule and a conditional or procedural sentence stay out of it
+        for text in ("Never open a PR against `main`; use a feature branch.",
+                     "You cannot open pull requests without a linked issue.",
+                     "Run the tests before you open a pull request."):
+            self.assertEqual(self.verdict(text), "no-policy-found", text)
+
+    def test_branch_rules_are_not_a_ban_on_pull_requests(self):
+        for text in ("Never open a PR against `main`, with one exception: the release PR.",
+                     "Do not open a pull request against an issue that is less than 2 weeks old.",
+                     "Do not submit a PR against a closed issue.",
+                     "Never open a pull request into the release branch."):
+            self.assertEqual(self.verdict(text), "no-policy-found", text)
+        self.assertEqual(self.verdict("Never open a pull request."), "restricted")  # the unqualified ban stays
+
+    def test_explicit_limits_on_ai_contributions_hold_in_an_agent_file(self):
+        self.assertEqual(self.verdict("AI-generated contributions are not accepted."), "banned")
+        self.assertEqual(self.verdict("Do not submit AI-written pull requests."), "banned")
+        self.assertEqual(self.verdict("Contributions by autonomous agents are not allowed."), "restricted")
+        self.assertEqual(self.verdict("The AI agent is not permitted to create pull requests, open issues or post comments."),
+                         "restricted")
+        self.assertEqual(self.verdict("Do not post AI-generated comments on pull requests."), "restricted")
+        self.assertEqual(self.verdict("If AI was used for a commit, add a generic `AI-assisted` trailer to the commit message."),
+                         "disclosure-required")
+        self.assertEqual(self.verdict("Never add Co-Authored-By agent trailers to commit messages."), "restricted")
+        self.assertEqual(self.verdict("AI tools are welcome."), "permitted")
+
+    def test_the_same_words_in_a_contribution_guide_keep_their_reading(self):
+        self.assertEqual(self.verdict("AI-generated contributions are not accepted.", "CONTRIBUTING.md"), "banned")
+
+    def test_agent_file_paths(self):
+        rules = _Rules(load_patterns())
+        for path in ("AGENTS.md", "sub/dir/CLAUDE.md", "GEMINI.md", ".github/copilot-instructions.md", ".cursorrules",
+                     ".cursor/rules/style.mdc", ".github/instructions/py.instructions.md", ".github/Agents.md", "Agents.md"):
+            self.assertTrue(rules.agent_file(path), path)
+        # a policy file or a product page that happens to say "agents" is read like any other file
+        for path in ("CONTRIBUTING.md", "AGENT_POLICY.md", "README.md", "docs/agents.md", "docs/features/agents.md"):
+            self.assertFalse(rules.agent_file(path), path)
+
+    # --- local defects found with the same repositories
+    def test_article_numbers_are_not_artwork(self):
+        text = "- **Prohibited practices (Art. 5), AI literacy (Art. 4)** and the rights impact assessment (Art. 27)."
+        self.assertNotIn("media-ban", self.rules(text, "docs/compliance/eu-ai-act.md"))
+        self.assertEqual(self.verdict("AI-generated art is not allowed.", "CONTRIBUTING.md"), "restricted")
+
+    def test_deepseek_rule_needs_whole_words(self):
+        # "another" contains "not"
+        self.assertEqual(self.verdict("An API key, or bring another model (OpenAI, Gemini, DeepSeek), or run a local one.",
+                                      "README.md"), "no-policy-found")
+        self.assertEqual(self.verdict("AI contributions made using DeepSeek or Grammarly are not allowed.", "CONTRIBUTING.md"),
+                         "restricted")
+
+    def test_a_review_bot_in_a_maintainer_workflow_is_not_a_ban(self):
+        text = 'If a review bot keeps raising the same false positive, add a "do not flag" entry to REVIEW.md.'
+        self.assertEqual(self.verdict(text, "CONTRIBUTING.md"), "no-policy-found")
+        self.assertEqual(self.verdict("AI review bots are not allowed in this repository.", "CONTRIBUTING.md"), "restricted")
+        self.assertEqual(self.verdict("AI review bots must not comment on pull requests.", "CONTRIBUTING.md"), "restricted")
+
+    def test_voice_rule_terms_must_sit_close_together(self):
+        far = ("Every pull request resolves one issue and must include the line in its description (`Fixes #N` is "
+               "rejected by our CI check). Opening a PR in the web UI pre-fills the template with the same structure "
+               "used by `.agents/skills/pull-request/SKILL.md` (concise outcome summary, evidence, test results, "
+               "post-merge validation, the exact commands you ran locally or in CI, links to the tickets, and the "
+               "author line, in the order the template shows); if you open a PR via `gh pr create` or an AI coding "
+               "agent, keep that structure.")
+        self.assertNotIn("ai-voice-ban", self.rules(far, "CONTRIBUTING.md"))  # a paragraph to read, not a restriction
+        self.assertEqual(self.verdict("Do not use AI to generate answers to questions from maintainers.", "CONTRIBUTING.md"),
+                         "restricted")
+
+    def test_a_pr_template_word_agent_alone_is_not_an_ai_prompt(self):
+        template = ".github/PULL_REQUEST_TEMPLATE.md"
+        self.assertEqual(self.verdict("- [ ] the agent still never holds a signing key", template), "no-policy-found")
+        self.assertEqual(self.verdict("- [ ] I used an AI agent for this change", template), "disclosure-required")
+        self.assertEqual(self.verdict("- [ ] An agent wrote part of this change", template), "disclosure-required")
+
+    # --- outside pull requests closed
+    def test_outside_pull_requests_are_closed(self):
+        for text in ("**We accept issues, not pull requests.** Design and implementation are done by the maintainers.",
+                     "Pull requests against this repository are opened by the **repository\nmaintainers** only.",
+                     "A pull request from anyone else is closed with a pointer back to this document.",
+                     "We do not accept external code contributions or pull requests.",
+                     "Only maintainers can open pull requests."):
+            self.assertEqual(self.verdict(text, "CONTRIBUTING.md"), "restricted", text)
+            self.assertEqual(self.rules(text, "CONTRIBUTING.md"), {"outside-pr-closed"}, text)
+
+    def test_outside_pull_requests_conditions_and_other_sentences_stay_quiet(self):
+        for text in ("We accept issues, not pull requests, unless the issue is labelled help wanted.",
+                     "Pull requests from contributors are reviewed within a week.",
+                     "Maintainers open pull requests for releases and tag them.",
+                     "We do not accept pull requests without a linked issue."):
+            self.assertEqual(self.verdict(text, "CONTRIBUTING.md"), "no-policy-found", text)
 
 
 if __name__ == "__main__":

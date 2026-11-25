@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "oss-ai-policy-check"
+abstract: "Finds a repository's AI contribution policy and links every cited line at a pinned commit SHA; says needs-review when unsure."
+type: software
+authors:
+  - alias: "Kemal (KarıncaAI)"
+version: 0.3.0
+date-released: 2026-11-22
+license: MIT
+repository-code: "https://github.com/KemalG-u/oss-ai-policy-check"
+url: "https://github.com/KemalG-u/oss-ai-policy-check"
+keywords:
+  - ai
+  - policy
+  - contributing
+  - github
+  - open-source

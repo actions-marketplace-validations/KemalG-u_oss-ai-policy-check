@@ -1,4 +1,8 @@
+> **Status: active, v0.3.0 (pre-1.0).** Interfaces may change.
+
 # oss-ai-policy-check
+
+[![CI](https://github.com/KemalG-u/oss-ai-policy-check/actions/workflows/ci.yml/badge.svg)](https://github.com/KemalG-u/oss-ai-policy-check/actions/workflows/ci.yml) [![PyPI](https://img.shields.io/pypi/v/oss-ai-policy-check)](https://pypi.org/project/oss-ai-policy-check/) [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/KemalG-u/oss-ai-policy-check/badge)](https://scorecard.dev/viewer/?uri=github.com/KemalG-u/oss-ai-policy-check)
 
 Finds a repository's AI contribution policy and links every line it cites at a fixed commit, so you can check
 the text yourself. When it cannot decide what the policy says, it answers `needs-review` instead of guessing.
@@ -71,9 +75,10 @@ When the files hold AI-policy text the tool cannot decide on, it says so instead
 ```
 VERDICT needs-review - mozilla-firefox/firefox @ a3178f3cbfac6e25d5bc7b6365c4ff520a42205e (a3178f3cbfac)
 confidence: low
-NEEDS HUMAN REVIEW (no-rule-decision): These paragraphs name AI and state a rule, but no rule of the tool decided on them.
+NEEDS HUMAN REVIEW (no-rule-decision): These paragraphs name AI and state a rule,
+  but no rule of the tool decided on them.
 evidence (4):
-  - needs-review (low): docs/contributing/ai-coding.md:13 - AI-assisted contributions must meet the same standards of correctness, security, and maintainability as any other
+  - needs-review (low): docs/contributing/ai-coding.md:13 - AI-assisted contributions must meet the same standards ...
     https://github.com/mozilla-firefox/firefox/blob/a3178f3cbfac6e25d5bc7b6365c4ff520a42205e/docs/contributing/ai-coding.md#L13
   ... (3 more)
 ```
@@ -150,14 +155,22 @@ the action. Inputs, outputs, permissions and more examples are in [docs/action.m
 Both modes were run once on a 60-repository set that had never been used to write or tune a rule or the prompt
 (called gold4 here). Labels are one person's reading of the written rubric (`tests/golden/RUBRIC.md`), pinned to
 commit SHAs. "Correct" means the verdict equals the label; a `needs-review` answer counts as not correct.
+The gold4 label file is a separate blind set and is not part of this repository, so these two rows cannot be rerun
+from here. The same runner is included: `python tests/golden/run_gold.py --split all --summary` (add
+`--classifier claude` for Claude mode) runs the published 151-row development set `tests/golden/gold.jsonl`,
+whose figures are optimistic because the rules were tuned on it (see [docs/limitations.md](docs/limitations.md)).
 
 | | correct | decided rows correct | `needs-review` | policy missed | Wilson 95% interval (correct) |
 |---|---|---|---|---|---|
-| Rules only (default) | 42 of 60 (70.0%) | 42 of 53 | 7 | 3 | 57% - 80% |
+| Rules only (default) | 42 of 60 (70.0%) | 42 of 53 | 7 | 2 | 57% - 80% |
 | Claude mode (`--classifier claude`) | 55 of 60 (91.7%) | 55 of 56 | 4 | 1 | 82% - 96% |
 
 "Decided rows" are the rows where the tool gave a class instead of abstaining. "Policy missed" is a repository
 that has an AI policy but got `no-policy-found`.
+
+When the rows were measured: the rules row was first run on 2026-11-22 and run again on 2026-11-24 with v0.3.0 and on 2026-11-25 with the rules of this repository after the
+`agent-file-no-posting` fix and again the same day after the agent-instruction-file change, each from the pinned SHAs, with the same 42 of 60 (v0.2.0 gives the same verdict on every one of the 60 rows). The Claude mode
+row was measured once with v0.3.0 on 2026-11-22; it has not been re-run.
 
 Caveats, all of which matter:
 
@@ -209,5 +222,5 @@ under your account, with your credentials; nothing else is sent.
 
 ## Project
 
-[AI-USE.md](AI-USE.md) says how this repository is produced. Contributions: [CONTRIBUTING.md](CONTRIBUTING.md).
+[AI-USE.md](AI-USE.md) says how this repository is produced. Contributions: [CONTRIBUTING.md](CONTRIBUTING.md); conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 Security reports: [SECURITY.md](SECURITY.md). Changes: [CHANGELOG.md](CHANGELOG.md). License: MIT, see [LICENSE](LICENSE).
