@@ -189,6 +189,18 @@ and fewer missed policies, at the price of a key, a network call per repository 
 tuning the rules, are optimistic and kept only as history in
 [docs/limitations.md](docs/limitations.md#measured-accuracy).
 
+## Weekly index
+
+Every Monday a GitHub Actions workflow runs the default `rules` classifier (no key, no model) on up to 300 popular
+public repositories that pushed in the last 30 days, and commits the result as open data: [`index/README.md`](index/README.md)
+has the counts per class, the repositories that changed class since the previous run and the cited lines;
+[`index/latest.json`](index/latest.json) has the decision, quoted line, source file and commit SHA of every repository;
+[`index/history/`](index/history) keeps one snapshot per run. The selection criteria are in
+[`index/config.json`](index/config.json). `banned` and `restricted` are shown only for a firm read; a weaker one is listed as `possible` (needs review) with
+its quote. It is a hint with the accuracy measured above, not a ruling; a wrong row is
+an [issue](https://github.com/KemalG-u/oss-ai-policy-check/issues). The builder is `scripts/build_index.py` (not part
+of the installed package).
+
 ## How it works and its limits
 
 - [How it works](docs/how-it-works.md): which files are read and how the verdict is chosen.

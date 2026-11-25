@@ -1,0 +1,16 @@
+{
+  "selection": {
+    "pushed_within_days": 30,
+    "min_stars": 1000,
+    "count": 300,
+    "max_per_language": 45,
+    "exclude_languages": ["Markdown", "(none)"],
+    "exclude": []
+  },
+  "scan": {
+    "include_org_policy": true,
+    "rate_reserve": 40,
+    "request_delay_seconds": 0.3,
+    "retries": 2
+  }
+}

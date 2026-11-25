@@ -7,6 +7,32 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Weekly AI contribution policy index: `scripts/build_index.py` and `.github/workflows/index.yml` (Monday 04:00 UTC,
+  or by hand) run the `rules` classifier on up to 300 popular, recently active repositories and commit
+  `index/latest.json`, `index/history/YYYY-MM-DD.json` and `index/README.md` (counts, changes since the previous run).
+  A scan that nears the hourly API limit stops and is marked partial. The script is not part of the package.
+- Index publication rule: `banned` and `restricted` are shown for a repository only when the read is firm (high
+  confidence, and the cited line sits in a contribution, policy, agent-instruction or template file). A weaker read is
+  listed under a separate class, `possible` (needs review), with its quote and what the rules read; the counts follow.
+  Before this, a weak ban such as one sentence in a README could appear as `banned` in the public index.
+- `tests/golden/agent_file_cases.json`: 11 more real excerpts at pinned commits (42 cases): five rows the 25 Nov 2026
+  index got wrong (microsoft/terminal, cathrynlavery/diagram-design, ocornut/imgui, ReactiveX/RxJava,
+  syncthing/syncthing) and six real bans that must not be lost (yt-dlp, free-for-dev, alacritty, meilisearch, typst,
+  SecLists). `gold.jsonl` is unchanged.
+
+### Fixed
+
+- Public index, 25 Nov 2026: five repositories were listed as `banned` that do not ban AI contributions.
+  microsoft/terminal has a conditional AI policy (now `restricted`), ocornut/imgui asks for no AI-generated prose
+  and syncthing/syncthing for no AI-generated issues or comments (both `restricted`), ReactiveX/RxJava requires
+  disclosure, and cathrynlavery/diagram-design only forbids bumping its plugin version. Rules: a ban sentence that
+  carries "not explicitly allowed" is a qualified ban; "fire-and-forget" is a weak scope; a ban on AI-generated prose,
+  text, issues or comments alone is read by `ai-voice-ban`, not `general-ban`; a sentence in which CI rejects a change,
+  or that is about a plugin or manifest version, is not a ban. The evidence line shown for a decision prefers a line
+  that names AI. The measured gold accuracy is unchanged.
+
 ## [0.3.1] - 2026-11-25
 
 ### Added

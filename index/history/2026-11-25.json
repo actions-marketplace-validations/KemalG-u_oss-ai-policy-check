@@ -1,0 +1,2121 @@
+{
+ "schema_version": "1",
+ "date": "2026-11-25",
+ "partial": false,
+ "tool": {
+  "name": "oss-ai-policy-check",
+  "version": "0.3.1",
+  "classifier": "rules"
+ },
+ "counts": {
+  "banned": 12,
+  "restricted": 63,
+  "disclosure-required": 45,
+  "needs-review": 63,
+  "permitted": 5,
+  "no-policy-found": 112,
+  "unreadable": 0
+ },
+ "repos": [
+  {
+   "repo": "public-apis/public-apis",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "9fb3bdb62643400aaebee03a2ecce0cd1ec934eb",
+   "complete": true
+  },
+  {
+   "repo": "morluto/rea",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "6e771da08eb17a82d34c7f7e0b09d13484193a17",
+   "complete": true
+  },
+  {
+   "repo": "freeCodeCamp/freeCodeCamp",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "8338d603715dfe1d08ea3c7ad98c0408313585e7",
+   "complete": true
+  },
+  {
+   "repo": "EbookFoundation/free-programming-books",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "53ea9c736e54178c7a4d64ea3a1c8fc51b185723",
+   "complete": true
+  },
+  {
+   "repo": "openclaw/openclaw",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "40b23868a5db2db4f198380a2ffc2547cdaaa53d",
+   "complete": false
+  },
+  {
+   "repo": "nilbuild/developer-roadmap",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "d2cd2115af53c88c7e25ad1e0e988ea118eb9318",
+   "complete": true
+  },
+  {
+   "repo": "vinta/awesome-python",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "4c3cb15dc695e95ae64add86b9994add8277f323",
+   "complete": true
+  },
+  {
+   "repo": "mattpocock/skills",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "6f7f7831a625f040a8e06a0e7954826b87ce775a",
+   "complete": true
+  },
+  {
+   "repo": "obra/superpowers",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "22f0b463e7a5e579904dd6211a520321035526f7",
+   "complete": true
+  },
+  {
+   "repo": "affaan-m/ECC",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "4adeee6732a12d1540f49a4d50a38ce8c97f9a53",
+   "complete": true
+  },
+  {
+   "repo": "practical-tutorials/project-based-learning",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "8ebaf25f31a276beb157bfd1c1f2f33148c40d07",
+   "complete": true
+  },
+  {
+   "repo": "deepseek-ai/deepseek-harness",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "4b399c39a6d1479cd84ca591b4d7c88e24d38a96",
+   "complete": true
+  },
+  {
+   "repo": "NousResearch/hermes-agent",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "b4db4842723a89842faaed766aba2ce588226e31",
+   "complete": true
+  },
+  {
+   "repo": "torvalds/linux",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "4dce97c6c265544342e716e62fd24bbb232590c5",
+   "complete": false
+  },
+  {
+   "repo": "react/react",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "92bb0678c52133a47b3095f6e54da883ea0d6cff",
+   "complete": true
+  },
+  {
+   "repo": "anomalyco/opencode",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "0caad64533a160451808b78623ed7614d0330bfe",
+   "complete": true
+  },
+  {
+   "repo": "TheAlgorithms/Python",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "30507bbe41397065728167fb09aa820f9fce8dc7",
+   "complete": true
+  },
+  {
+   "repo": "n8n-io/n8n",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "0d4ba563498b01762376f66eedefbfa8a0d90048",
+   "complete": false
+  },
+  {
+   "repo": "ossu/computer-science",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "8f8272b1d378d31494240aa1d667aa6b045c6552",
+   "complete": true
+  },
+  {
+   "repo": "yt-dlp/yt-dlp",
+   "category": "banned",
+   "confidence": "high",
+   "commit_sha": "da452a569fb3d04091468d920f9b9e68512e0373",
+   "complete": true
+  },
+  {
+   "repo": "firecrawl/firecrawl",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "edd2574beed4b92a12cd83198de6f9ac6f0030ae",
+   "complete": true
+  },
+  {
+   "repo": "tensorflow/tensorflow",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "40db3fe9bd90e24240d3e3cf39d7f9f93c0b85c2",
+   "complete": true
+  },
+  {
+   "repo": "massgravel/Microsoft-Activation-Scripts",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "6cfd6f455ffb4983ce567231d800f08c44c39f00",
+   "complete": true
+  },
+  {
+   "repo": "anthropics/skills",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba",
+   "complete": true
+  },
+  {
+   "repo": "DietrichGebert/ponytail",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "ebd8654c2c627f721eb8f9c0d1bd4090a29f9e10",
+   "complete": true
+  },
+  {
+   "repo": "microsoft/markitdown",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "ed178952a6672abdfd35b5f9e76a80b6cefc086e",
+   "complete": true
+  },
+  {
+   "repo": "avelino/awesome-go",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "a8277a047c3c79ac6799ed0cc80554bb8b92d16f",
+   "complete": true
+  },
+  {
+   "repo": "microsoft/vscode",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "f109399844b0ca71bc53385510ae8d28ce0d4fbd",
+   "complete": true
+  },
+  {
+   "repo": "ultraworkers/claw-code",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "ca8752613b3b54b7d8b82e552298cea0f078133c",
+   "complete": true
+  },
+  {
+   "repo": "521xueweihan/HelloGitHub",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "d65699c2892f3ad7516398a3fbd3855913f9d17d",
+   "complete": true
+  },
+  {
+   "repo": "ohmyzsh/ohmyzsh",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "1eebae3a3f2071b1502211547791e23495bbfb42",
+   "complete": true
+  },
+  {
+   "repo": "Significant-Gravitas/AutoGPT",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "dd0b5f73266ea5f3dfab37ebccd93049af58e106",
+   "complete": false
+  },
+  {
+   "repo": "ollama/ollama",
+   "category": "permitted",
+   "confidence": "low",
+   "commit_sha": "784dd544291825e8f5f064672dc2bd7f4d9345ed",
+   "complete": true
+  },
+  {
+   "repo": "CyC2018/CS-Notes",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "cb9f180fb26da7b7100fde250a5dd137455b3a02",
+   "complete": true
+  },
+  {
+   "repo": "flutter/flutter",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "06f1c24345a29b26fc388ca8072f2b03a36a4d82",
+   "complete": true
+  },
+  {
+   "repo": "f/prompts.chat",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "029fa0783a31070ca821710a5347970a228725f5",
+   "complete": true
+  },
+  {
+   "repo": "twbs/bootstrap",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "4549c5b7ad0b44307be1f4689174e18c7058a0df",
+   "complete": true
+  },
+  {
+   "repo": "msitarzewski/agency-agents",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "8ae6164602c95ca78828b148b9052460ee426885",
+   "complete": true
+  },
+  {
+   "repo": "huggingface/transformers",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "706bd9e063c27dacc5daacd3bc7c6c6811fc4941",
+   "complete": true
+  },
+  {
+   "repo": "langgenius/dify",
+   "category": "permitted",
+   "confidence": "low",
+   "commit_sha": "fce5d308298f5ef4f29e06a2f0bef06c58123c2d",
+   "complete": true
+  },
+  {
+   "repo": "clash-verge-rev/clash-verge-rev",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "1dba31c6afd41ecdc80f137f250386bb1a60868a",
+   "complete": true
+  },
+  {
+   "repo": "open-webui/open-webui",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "926f826eaef6179c092a936eede6c7363e425975",
+   "complete": true
+  },
+  {
+   "repo": "farion1231/cc-switch",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "aa4a8c63365d1d3ed2eb27872a7da6a0709d0629",
+   "complete": true
+  },
+  {
+   "repo": "anthropics/claude-code",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "fba6b0a031e21f7c8f936b711e507a057d3d8d0d",
+   "complete": true
+  },
+  {
+   "repo": "langflow-ai/langflow",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "6c9aea6f5d5f47a76a25e8e3e1b4779a4f83d522",
+   "complete": true
+  },
+  {
+   "repo": "Genymobile/scrcpy",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "c939183a7cdca4599cee337e60bc0e147b6c9828",
+   "complete": true
+  },
+  {
+   "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "8db36338810d0942567b97ce439affd1619fcf31",
+   "complete": true
+  },
+  {
+   "repo": "Graphify-Labs/graphify",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "02c27dc246cd7bc359d0f4acaf53a3fce595bc1e",
+   "complete": true
+  },
+  {
+   "repo": "github/spec-kit",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "f912acbef22e373f68e6c925216cc8d2ad78964d",
+   "complete": true
+  },
+  {
+   "repo": "langchain-ai/langchain",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "9d461bb46a40fcd5673e8d3417dad8b10e731557",
+   "complete": true
+  },
+  {
+   "repo": "Comfy-Org/ComfyUI",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "a2103ae69d98d8ef94c150f5a472b89775eed929",
+   "complete": true
+  },
+  {
+   "repo": "Shubhamsaboo/awesome-llm-apps",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "14c5f8ff0094659f321801385d2b52ccc65fea3b",
+   "complete": true
+  },
+  {
+   "repo": "harry0703/MoneyPrinterTurbo",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "2dc10e850d78c61264a64ea180def2b7f1f334d8",
+   "complete": true
+  },
+  {
+   "repo": "iptv-org/iptv",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "46c85ffcd6e04ab5d2cc2450d2159cd01f2da1cc",
+   "complete": true
+  },
+  {
+   "repo": "vercel/next.js",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "ea5a73353a7b8509555d885823971a21b6f4a489",
+   "complete": true
+  },
+  {
+   "repo": "ripienaar/free-for-dev",
+   "category": "banned",
+   "confidence": "high",
+   "commit_sha": "68a81d23d8094131b03310f6bd0ec4381e6cdc20",
+   "complete": true
+  },
+  {
+   "repo": "garrytan/gstack",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "7eba5caf6f5fce30810bc265ee077b3150c4af47",
+   "complete": true
+  },
+  {
+   "repo": "ytdl-org/youtube-dl",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "bc069d2bb40bcbc5bdfdf352ca15bf586c7792cb",
+   "complete": true
+  },
+  {
+   "repo": "microsoft/PowerToys",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "99845fc9a8d93f755920fc931697069fda7baa06",
+   "complete": true
+  },
+  {
+   "repo": "golang/go",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "d695060f5be23f2dd86d21d861a292dc2d183cab",
+   "complete": true
+  },
+  {
+   "repo": "stablyai/orca",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "e347c1c21a0e00148d8a90e6d5020ce041cda459",
+   "complete": true
+  },
+  {
+   "repo": "openai/codex",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "06f334aa4b053023c5b4199dde0ba9c004d64820",
+   "complete": true
+  },
+  {
+   "repo": "excalidraw/excalidraw",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "5681e7d8be319092b13979e947afe632d5a4a525",
+   "complete": true
+  },
+  {
+   "repo": "ggml-org/llama.cpp",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "244640b7f26e2a7301b27a24edc4f7feaf97d52f",
+   "complete": true
+  },
+  {
+   "repo": "krahets/hello-algo",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "d5342f4ece1d5d6e480fe29a1a84ede449fe7a3e",
+   "complete": true
+  },
+  {
+   "repo": "rustdesk/rustdesk",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "a0c0963c483fc8f1aeed4547787d1673adcb583c",
+   "complete": true
+  },
+  {
+   "repo": "Chalarangelo/30-seconds-of-code",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "bd756f8b2283a38560efe83cb30af38324d4e9e9",
+   "complete": true
+  },
+  {
+   "repo": "kubernetes/kubernetes",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "3596eb69d25147bd790810090712c79f02426b90",
+   "complete": true
+  },
+  {
+   "repo": "shadcn-ui/ui",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "055aa6b7837b1808456a24beb4c97a677864aa82",
+   "complete": true
+  },
+  {
+   "repo": "react/react-native",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "9d6a2497fb145f7e24303620a42f02cfa993ad78",
+   "complete": true
+  },
+  {
+   "repo": "microsoft/generative-ai-for-beginners",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "e45c369a8c76bdae831cb5a172d36a6a0fc3a6a2",
+   "complete": true
+  },
+  {
+   "repo": "electron/electron",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "d98841c11ec9f890f3ba339b02f210f8012f1d49",
+   "complete": true
+  },
+  {
+   "repo": "nodejs/node",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "478c2eea871d09554530ddf298d2bb2fceab077c",
+   "complete": true
+  },
+  {
+   "repo": "earendil-works/pi",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "b882d08f34f8a245c8d3ea8b057759e1b8b2054c",
+   "complete": true
+  },
+  {
+   "repo": "TauricResearch/TradingAgents",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "121265d18d467ac717f7af99cb0d669c15d2e73c",
+   "complete": true
+  },
+  {
+   "repo": "JuliusBrussee/caveman",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "47c61be2d10a354f0c5cbe2b90959d24c06b16c6",
+   "complete": true
+  },
+  {
+   "repo": "rust-lang/rust",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "bc9132daa5c0be572ebb81304f6039d947298e67",
+   "complete": true
+  },
+  {
+   "repo": "browser-use/browser-use",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "94784c1f7ecb6b0a5f565b7f9fba59e395b7e048",
+   "complete": true
+  },
+  {
+   "repo": "Leonxlnx/taste-skill",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "d1a2bb41d927083ac7118f60cfc9cdf711810ea0",
+   "complete": true
+  },
+  {
+   "repo": "2dust/v2rayN",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "91c61b1fe595994c7bcf09739ddb5dc32fde4f04",
+   "complete": true
+  },
+  {
+   "repo": "godotengine/godot",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "8f2e46bca3c1cca8f3b759a0eaf67e44082b81a4",
+   "complete": true
+  },
+  {
+   "repo": "addyosmani/agent-skills",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "e997ac5b9a74eab332d5e9793bb38a38c8cfdd74",
+   "complete": true
+  },
+  {
+   "repo": "immich-app/immich",
+   "category": "banned",
+   "confidence": "high",
+   "commit_sha": "7b27863b13d7ec52340e87637d71a39aa8d7efc0",
+   "complete": true
+  },
+  {
+   "repo": "thedotmack/claude-mem",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "11b47f9f4b8dc3614fab7452647f578886468849",
+   "complete": true
+  },
+  {
+   "repo": "mrdoob/three.js",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "1d3772857eb8970ce24b3757980c5e9d46c0d6ff",
+   "complete": true
+  },
+  {
+   "repo": "jaywcjlove/awesome-mac",
+   "category": "permitted",
+   "confidence": "low",
+   "commit_sha": "e4cf8eb3e527bf85d3199b91082a33f93c16ba00",
+   "complete": true
+  },
+  {
+   "repo": "debpalash/VoiceStudio",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "039e8fa11d78cb340e6913b0f824df2fc887b636",
+   "complete": true
+  },
+  {
+   "repo": "sherlock-project/sherlock",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "c588d7c8b476df9f9c84912a05d1430fb8cdcdae",
+   "complete": true
+  },
+  {
+   "repo": "paperclipai/paperclip",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "0609da79fbb9f895bdde21632505e5ec15c36e70",
+   "complete": false
+  },
+  {
+   "repo": "pbakaus/impeccable",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "9e460a87ef338ee9d12c7beed8fedc597a5af5f7",
+   "complete": true
+  },
+  {
+   "repo": "supabase/supabase",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "8f75187422f4bc469e60139f0ef168aee70a27d5",
+   "complete": true
+  },
+  {
+   "repo": "Panniantong/Agent-Reach",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "8d9ecc1f5521fe7d223cde782aaa4005695e2671",
+   "complete": true
+  },
+  {
+   "repo": "d3/d3",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "7b634fc81455388e8ac4c2f7fbf79b20e16b94a8",
+   "complete": true
+  },
+  {
+   "repo": "tauri-apps/tauri",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "7d4c45824ce19c1387287c4a51596eca751880f0",
+   "complete": true
+  },
+  {
+   "repo": "microsoft/TypeScript",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "b9f8778ca044b5cd5c97e047ce11e5dc695ce987",
+   "complete": true
+  },
+  {
+   "repo": "papers-we-love/papers-we-love",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "0b33c953aae0c90e6d15c4ed41b01e76358f3c28",
+   "complete": true
+  },
+  {
+   "repo": "fatedier/frp",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "a2c975efb5e55102068065d61cfc17ffe34e939d",
+   "complete": true
+  },
+  {
+   "repo": "nexu-io/open-design",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "5fdcc3db1e31bd4fa70f673041b78e87977507c3",
+   "complete": true
+  },
+  {
+   "repo": "axios/axios",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "a35e6f4ee55dcdec8c7b6f15218d636754c06c66",
+   "complete": true
+  },
+  {
+   "repo": "google-gemini/gemini-cli",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "08e9a20f749aefcbda38622ac757899c3d6216e0",
+   "complete": true
+  },
+  {
+   "repo": "rasbt/LLMs-from-scratch",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "22c637fdf9aa2f5fdd39c2cc80c1d36b4ab7d8d8",
+   "complete": true
+  },
+  {
+   "repo": "denoland/deno",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "d8c551b5a5b46d8ec3892a91d0364cfcbca2c681",
+   "complete": true
+  },
+  {
+   "repo": "D4Vinci/Scrapling",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "938867232230fb7b164fa97211497c204fa2e167",
+   "complete": true
+  },
+  {
+   "repo": "pytorch/pytorch",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "cf717e386a86c46b1990ec31722644d660057948",
+   "complete": true
+  },
+  {
+   "repo": "microsoft/terminal",
+   "category": "banned",
+   "confidence": "low",
+   "commit_sha": "43c7ec76a2eb64dac184358fbad25040c9f4a24f",
+   "complete": true
+  },
+  {
+   "repo": "ruvnet/RuView",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "3cc1585f0b341fae724dcb803f76a2498d49d756",
+   "complete": true
+  },
+  {
+   "repo": "fastapi/fastapi",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "05e6df7e906c3decba377c37548019973f40bf15",
+   "complete": true
+  },
+  {
+   "repo": "neovim/neovim",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "a8d90c09db34858d37b4d6a5bca3ce09554d0c49",
+   "complete": true
+  },
+  {
+   "repo": "angular/angular",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "c3154eabbf963010618a06fc3c890a626d602768",
+   "complete": true
+  },
+  {
+   "repo": "NationalSecurityAgency/ghidra",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "50b78476df100fd360f6623223c5e4510c569c5c",
+   "complete": true
+  },
+  {
+   "repo": "microsoft/playwright",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "b9cff8a68a090c27d29d856747265732468acff0",
+   "complete": true
+  },
+  {
+   "repo": "localsend/localsend",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "44f48f18a5503c43873570ff489d27ff1983e198",
+   "complete": true
+  },
+  {
+   "repo": "ant-design/ant-design",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "fdff100719297c25e079e4d0995918155663f348",
+   "complete": true
+  },
+  {
+   "repo": "tt-a1i/archify",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "aff5c2b2a0f8b6cdb187f5f121e965a495833f10",
+   "complete": true
+  },
+  {
+   "repo": "mui/material-ui",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "9769f52feec52782e29a1770b268ac3eb26e4ab9",
+   "complete": true
+  },
+  {
+   "repo": "hacksider/Deep-Live-Cam",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "08896a51c9a6198f50dc9f7508acf39fc460c8f1",
+   "complete": true
+  },
+  {
+   "repo": "tailwindlabs/tailwindcss",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "f95406ebb8d9c53d377e0ebb5467c318704c93cf",
+   "complete": true
+  },
+  {
+   "repo": "vllm-project/vllm",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "aec644a8f9e7b8c6b962ee3fe02ba541fa9a430c",
+   "complete": true
+  },
+  {
+   "repo": "Stirling-Tools/Stirling-PDF",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "1918c70836275cc7ab41790378d48fb0635ae2e9",
+   "complete": true
+  },
+  {
+   "repo": "microsoft/Web-Dev-For-Beginners",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "93b9967af14efd43246c713217dad40d7c27c2f5",
+   "complete": true
+  },
+  {
+   "repo": "oven-sh/bun",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "0966e99d8f357833a147af2a4bce7d66321829c1",
+   "complete": true
+  },
+  {
+   "repo": "nvm-sh/nvm",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "3bf66860904e752a128637e423815b899a004155",
+   "complete": true
+  },
+  {
+   "repo": "odysseus-dev/odysseus",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "7e46dfa9c6bce2a701e673d81342fbd98b5b82a5",
+   "complete": true
+  },
+  {
+   "repo": "puppeteer/puppeteer",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "95b7f8507a3141a93422e2959acd18a42fd0a9a6",
+   "complete": true
+  },
+  {
+   "repo": "zed-industries/zed",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "552644414c580ed540f027f6439881ea5c88d02a",
+   "complete": true
+  },
+  {
+   "repo": "louislam/uptime-kuma",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "8c079b8d4fb287816ddb02792c2a7fe12a5d5323",
+   "complete": true
+  },
+  {
+   "repo": "infiniflow/ragflow",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "bb7b3c28888c21e1610678d3d7b8c2094265a644",
+   "complete": true
+  },
+  {
+   "repo": "Egonex-AI/Understand-Anything",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "b232f356446295e4eaa05b9b285e08ce5cd5e8a0",
+   "complete": true
+  },
+  {
+   "repo": "OpenHands/OpenHands",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "ccdc5f51c3595fafdbf2ce57706cef65c3c52d6b",
+   "complete": true
+  },
+  {
+   "repo": "astral-sh/uv",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "e3e7c1eacb980339352a5ad69affcd3b6c206c92",
+   "complete": true
+  },
+  {
+   "repo": "home-assistant/core",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "2967a24ca1e3e59f2a9909bbf03f3708687b7711",
+   "complete": true
+  },
+  {
+   "repo": "microsoft/ML-For-Beginners",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "8e5c0dfffdb56181450363f9ccd880bc69737ae8",
+   "complete": true
+  },
+  {
+   "repo": "modelcontextprotocol/servers",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "c799c8552b0f27b7a33a7b9233773da144dddcf5",
+   "complete": true
+  },
+  {
+   "repo": "django/django",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "baa7a80973d32beaa90beed500bd91b17f7c3172",
+   "complete": true
+  },
+  {
+   "repo": "opencv/opencv",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "2d579693d87aa81224bfda0c2f92b63d4745a68a",
+   "complete": true
+  },
+  {
+   "repo": "storybookjs/storybook",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "a066aa49a6916f388fb58a932b4d8bb9ee2a2d44",
+   "complete": true
+  },
+  {
+   "repo": "mermaid-js/mermaid",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "6374e521f43fde5cfc60d65410c1aa033af29aaf",
+   "complete": true
+  },
+  {
+   "repo": "koala73/worldmonitor",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "eabe646f1e5e47c2f1866691dc21608665e3ae83",
+   "complete": true
+  },
+  {
+   "repo": "syncthing/syncthing",
+   "category": "banned",
+   "confidence": "low",
+   "commit_sha": "1107b3cd11dbe267a8b80bbe1f89fb86a070b5c3",
+   "complete": true
+  },
+  {
+   "repo": "bitcoin/bitcoin",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "4cf0f7c80cd4da7c7f79a958f7455c4bfd1f86aa",
+   "complete": true
+  },
+  {
+   "repo": "gohugoio/hugo",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "47f831efbd1a90ec370e5dc487882319a44416ed",
+   "complete": true
+  },
+  {
+   "repo": "cheaper-inference/OmniRoute",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "a7000ec2383dd9a681cee5f09e35915682d93ab4",
+   "complete": false
+  },
+  {
+   "repo": "heygen-com/hyperframes",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "a3e0903763450b9cecfbc72f0b6e47fd64dff6cd",
+   "complete": true
+  },
+  {
+   "repo": "sveltejs/svelte",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "827be1e4ef3bb98e852aa63af44decef8b7a7cba",
+   "complete": true
+  },
+  {
+   "repo": "datawhalechina/hello-agents",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "2eb1c7547018b519b85cb57acf5533f12d65bf8e",
+   "complete": true
+  },
+  {
+   "repo": "unclecode/crawl4ai",
+   "category": "permitted",
+   "confidence": "high",
+   "commit_sha": "4e4bab5d44a7557eb403f137ec589833368a3e38",
+   "complete": true
+  },
+  {
+   "repo": "rtk-ai/rtk",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "97e68d5358aa5d91d1540ea64df58c9688bcf83d",
+   "complete": true
+  },
+  {
+   "repo": "Ebony-Vinyl/dsh-our-free-model",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "5f61762eed3b2ffea97be82ee32318d1d45e25c1",
+   "complete": true
+  },
+  {
+   "repo": "lobehub/lobehub",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "0aefcd03537d01e603cba86090e04d1cb23c5eef",
+   "complete": true
+  },
+  {
+   "repo": "bytedance/deer-flow",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "aa9913c4cc2d3ba537d78a48de9ef531fdcbbb05",
+   "complete": true
+  },
+  {
+   "repo": "laravel/laravel",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "f32d7019cbd0ab0c378b3154c551d0c60c553ebc",
+   "complete": true
+  },
+  {
+   "repo": "career-ops-hq/career-ops",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "0a5af57a4eef3e1cff5c0ea1df85f74c24f09717",
+   "complete": true
+  },
+  {
+   "repo": "junegunn/fzf",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "ed173e71e44b2a5fa6264ecf232a153dee6994d0",
+   "complete": true
+  },
+  {
+   "repo": "realworld-apps/realworld",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "4248dbe042138a357578c15a655a38c12abba353",
+   "complete": true
+  },
+  {
+   "repo": "opendatalab/MinerU",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "097de7f63f54722c9b805ee1c9a14a0c5b02e078",
+   "complete": true
+  },
+  {
+   "repo": "vitejs/vite",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "86bf3067e8fcaea2ad6226bb77adc72fbb2ab95a",
+   "complete": true
+  },
+  {
+   "repo": "jesseduffield/lazygit",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "10f045b8f93232a03e8522f924e65681b0b210d8",
+   "complete": true
+  },
+  {
+   "repo": "OpenMontageInc/OpenMontage",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "2e003e65fa99a0f329478a2c1cdcf26bc481933a",
+   "complete": true
+  },
+  {
+   "repo": "swisskyrepo/PayloadsAllTheThings",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "08ea40e77db3f42ef8f20c65196f3936a19b6c86",
+   "complete": true
+  },
+  {
+   "repo": "ruvnet/ruflo",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "48b04dce286a1df4af0411923821cf63399d7c8b",
+   "complete": true
+  },
+  {
+   "repo": "tonsky/FiraCode",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "1a2ebc6a8133cfdafb98cc7fcdd209878acf04bf",
+   "complete": true
+  },
+  {
+   "repo": "Z4nzu/hackingtool",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "c3a858990f1f772e5c59f10c51f1a7aeb888ef23",
+   "complete": true
+  },
+  {
+   "repo": "spring-projects/spring-boot",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "ebb5e11c70c50469c45f8aada56dd6d477c6b77f",
+   "complete": true
+  },
+  {
+   "repo": "netdata/netdata",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "fd8102ea144f4311d3d83b2b33b9720a6a9b5069",
+   "complete": true
+  },
+  {
+   "repo": "storytold/photocraft",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "830316b775f1f6734498ac6e39fd1298955ff93f",
+   "complete": true
+  },
+  {
+   "repo": "abi/screenshot-to-code",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "f2e5bbdd1dd5d93c259548d9bccf54e2a5f06a30",
+   "complete": true
+  },
+  {
+   "repo": "ventoy/Ventoy",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "26980f9d59192657b66c57d85157f44a08b24cc6",
+   "complete": true
+  },
+  {
+   "repo": "hoppscotch/hoppscotch",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "6177eae1875ea4cc8fc46604d65bf85478912d85",
+   "complete": true
+  },
+  {
+   "repo": "microsoft/ai-agents-for-beginners",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "3bee2ddf8e7aab27b17ef9e1d4a3f2c541a1913e",
+   "complete": true
+  },
+  {
+   "repo": "shareAI-lab/learn-claude-code",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "448c75bb596917ad196cc1fb7558f459c5c50fdd",
+   "complete": true
+  },
+  {
+   "repo": "headroomlabs-ai/headroom",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "d2014cb948d27bd9d411b147a6d203363f70b912",
+   "complete": true
+  },
+  {
+   "repo": "obsproject/obs-studio",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "0c790bd0151fb9f574867e025ecf57e6eedc58e2",
+   "complete": true
+  },
+  {
+   "repo": "coder/code-server",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "c094099c1516e578cb3b0976175e4e75a552e6d1",
+   "complete": true
+  },
+  {
+   "repo": "AppFlowy-IO/AppFlowy",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "8fcee27d9bd93aad4ee0191d5d8d915d6a9a4e93",
+   "complete": true
+  },
+  {
+   "repo": "caddyserver/caddy",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "679806f92d49e5b494200f2e90a93f228203a418",
+   "complete": true
+  },
+  {
+   "repo": "doocs/advanced-java",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "8aa03929436ab88e6e34273ccf2281886843d91a",
+   "complete": true
+  },
+  {
+   "repo": "pingdotgg/t3code",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "e36800e61babed824d055393d62fedc961e26e3b",
+   "complete": true
+  },
+  {
+   "repo": "elastic/elasticsearch",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "3a339c93c9169d90260914cb7e6a2b7be740feff",
+   "complete": true
+  },
+  {
+   "repo": "grafana/grafana",
+   "category": "permitted",
+   "confidence": "high",
+   "commit_sha": "04feb18b376f4c14f0bf46637269db7e68828321",
+   "complete": true
+  },
+  {
+   "repo": "redis/redis",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "bb490b4dc9061f46cf158f303872b21c65d1db9c",
+   "complete": true
+  },
+  {
+   "repo": "tesseract-ocr/tesseract",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "ba7d34113947d343fd766773bb365922afda7e6e",
+   "complete": true
+  },
+  {
+   "repo": "eternity4719/HowToLiveBetter",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "6f1dd6ba49627b40697a788608923ac4d2260456",
+   "complete": true
+  },
+  {
+   "repo": "openai/openai-cookbook",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "dfd760b4de0bd175b51ad05b9b5260c36dfea09c",
+   "complete": true
+  },
+  {
+   "repo": "ocornut/imgui",
+   "category": "banned",
+   "confidence": "low",
+   "commit_sha": "667c01946451f71f7852aeda8acbdf41d1b9f36a",
+   "complete": true
+  },
+  {
+   "repo": "chrislgarry/Apollo-11",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "e7576d50f7c279a707cfaa71be2020592dbf43a8",
+   "complete": true
+  },
+  {
+   "repo": "tw93/Mole",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "ff7aac5abb24a806a00081656e70b4e71e506b04",
+   "complete": true
+  },
+  {
+   "repo": "juliangarnier/anime",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "01b81be1df6843ccfe0a71c0699a746bf740dd77",
+   "complete": true
+  },
+  {
+   "repo": "danielmiessler/SecLists",
+   "category": "banned",
+   "confidence": "low",
+   "commit_sha": "db925350dc6512707b51427caf1822aa31f73c0e",
+   "complete": true
+  },
+  {
+   "repo": "thedaviddias/Front-End-Checklist",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "e8d14d049010e2ce25afcd5e8609dfcbbe63e47e",
+   "complete": true
+  },
+  {
+   "repo": "nektos/act",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "ac4c09993f474fc8091608f2f7cf85a69dfd012f",
+   "complete": true
+  },
+  {
+   "repo": "cathrynlavery/diagram-design",
+   "category": "banned",
+   "confidence": "low",
+   "commit_sha": "b228c5d77794a84150fca41b22940bb316b1398d",
+   "complete": true
+  },
+  {
+   "repo": "moby/moby",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "09e4d48143a14f96da894e8a0b55ef04e61b432d",
+   "complete": true
+  },
+  {
+   "repo": "protocolbuffers/protobuf",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "e5bed28d750c106809c00ab179f56ed5826474b0",
+   "complete": true
+  },
+  {
+   "repo": "dani-garcia/vaultwarden",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "dbd7829ed140ae3458abc97dedec9a4421ddff42",
+   "complete": true
+  },
+  {
+   "repo": "microsoft/AI-For-Beginners",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "1ff3c870707ec312f4c4a3bba4eaf0d9e06456a3",
+   "complete": true
+  },
+  {
+   "repo": "byoungd/up",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "dc69fc88bf323c1bd789f8f9a1a77e1b59c1914c",
+   "complete": false
+  },
+  {
+   "repo": "swiftlang/swift",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "b66c8eb3ef3cd8fb1ad44844901157b9ff4f6ac8",
+   "complete": true
+  },
+  {
+   "repo": "BurntSushi/ripgrep",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "3e85c6c148fdce38a99ceeb9d2780dc7b03b4a4f",
+   "complete": true
+  },
+  {
+   "repo": "expressjs/express",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "43fca52d28a422c8be48fd489cbd4f2d6152bab6",
+   "complete": true
+  },
+  {
+   "repo": "gorhill/uBlock",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "b8a305eec6fbfa2269b1321c58783191b24de7f0",
+   "complete": true
+  },
+  {
+   "repo": "shanraisshan/claude-code-best-practice",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "53e34a13a163b621ef3f91dae4665c74694398a0",
+   "complete": true
+  },
+  {
+   "repo": "LadybirdBrowser/ladybird",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "aef80893330f71f3b79be6eec10dc42516f6294c",
+   "complete": true
+  },
+  {
+   "repo": "openinterpreter/openinterpreter",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "f1701ae772bf1ee8ced04c83d5a806bd694f9fd1",
+   "complete": true
+  },
+  {
+   "repo": "Mintplex-Labs/anything-llm",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "b01447009150507ae0cfd1304e3492fcaf2a92d8",
+   "complete": true
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "b8da6e3cba7ed9033edcec8387ec56efecb3e8e2",
+   "complete": true
+  },
+  {
+   "repo": "prometheus/prometheus",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "e56aabdcbec6d8d6621244530654502244d2f5de",
+   "complete": true
+  },
+  {
+   "repo": "chartjs/Chart.js",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "76ba6090838af406251fd3e6924730283ed992b0",
+   "complete": true
+  },
+  {
+   "repo": "TheAlgorithms/Java",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "15a4a9d36387782eb324416984b6e465d1c3f7cc",
+   "complete": true
+  },
+  {
+   "repo": "bilawalsidhu/gods-eye-view",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "47cbfd63cc0b2549275c2269e605d4b2a3b33286",
+   "complete": true
+  },
+  {
+   "repo": "ChrisTitusTech/winutil",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "70c23c80641d7370532af2f619b2842658600842",
+   "complete": true
+  },
+  {
+   "repo": "2dust/v2rayNG",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "5fa043e90a0cc3567455b2c793be425de510435c",
+   "complete": true
+  },
+  {
+   "repo": "coollabsio/coolify",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "a163d1e7c73500455e698cb5e558c0c931fcb230",
+   "complete": true
+  },
+  {
+   "repo": "alacritty/alacritty",
+   "category": "banned",
+   "confidence": "low",
+   "commit_sha": "791efff6d74c66bee390c259e322626ca93aadb6",
+   "complete": true
+  },
+  {
+   "repo": "warpdotdev/warp",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "e3525c726d885830a66474fd468ac8014dbf2ec8",
+   "complete": true
+  },
+  {
+   "repo": "webpack/webpack",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "144755ec3b92aafe4ee6dc1cd43895eb9b21c7ff",
+   "complete": true
+  },
+  {
+   "repo": "traefik/traefik",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "8fcaa7cda47c139b76e02ab3d115c168d093ac04",
+   "complete": true
+  },
+  {
+   "repo": "termux/termux-app",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "8629e632fcb95da272221be327db653fb24befe9",
+   "complete": true
+  },
+  {
+   "repo": "chen08209/FlClash",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "afe7136002271fd64f098b154e7fff40be721eb8",
+   "complete": true
+  },
+  {
+   "repo": "rust-lang/rustlings",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "f7b9b3c5882a1a43275130b95142d94f847526f5",
+   "complete": true
+  },
+  {
+   "repo": "usememos/memos",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "1656ef0d66afbf33af87c1fe0470d3960beaf46a",
+   "complete": true
+  },
+  {
+   "repo": "git/git",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "77904e546de3bd940621092ecec47a88d0cede5d",
+   "complete": true
+  },
+  {
+   "repo": "ghostty-org/ghostty",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "70cee5810605052227608295f2b097322d20e49b",
+   "complete": true
+  },
+  {
+   "repo": "topjohnwu/Magisk",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "a212cd92b74174f87c720ff849461a90943b382f",
+   "complete": true
+  },
+  {
+   "repo": "jgraph/drawio-desktop",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "5e8406789216bed8f043bc503f4927b4034d7a71",
+   "complete": true
+  },
+  {
+   "repo": "tw93/Pake",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "fbba237182edf496576370e13c46d4b050ad9a57",
+   "complete": true
+  },
+  {
+   "repo": "Raphire/Win11Debloat",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "3d8feefbbc672d55af4b84c8681a1996538e04e2",
+   "complete": true
+  },
+  {
+   "repo": "penpot/penpot",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "a0bbafaf12c60804fde2c03a510ed62049e0942a",
+   "complete": true
+  },
+  {
+   "repo": "coreyhaines31/marketingskills",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "8fd2fcade2fd6629026e9dfe6d133b55b36968b9",
+   "complete": true
+  },
+  {
+   "repo": "pi-hole/pi-hole",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "f7c0220e63e753c664a1ec08d42d6b647b86005d",
+   "complete": true
+  },
+  {
+   "repo": "sharkdp/bat",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "4bd5c5b602950ea8fe62ea16d851d6a26eccfb76",
+   "complete": true
+  },
+  {
+   "repo": "boykopovar/AnyPS5",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "102cad67dae5ca685a320af12f7ae32ff5af792e",
+   "complete": false
+  },
+  {
+   "repo": "FuelLabs/sway",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "2ce2b31118efa701fb21c1c2e2a4ad9f32ba5e9c",
+   "complete": true
+  },
+  {
+   "repo": "rclone/rclone",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "5e2a70fee058ca16948d37d4dabd4aabb4549dd2",
+   "complete": true
+  },
+  {
+   "repo": "Nutlope/hallmark",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "04977e15f3dfd6ee4b74c887dac3eb52665d6c92",
+   "complete": true
+  },
+  {
+   "repo": "starship/starship",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "1b5c2f257ef276c3020899623a1942b3ecd457f7",
+   "complete": true
+  },
+  {
+   "repo": "h5bp/Front-end-Developer-Interview-Questions",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "df6ff7e66a42a3e645f3511e643f42e6288b634b",
+   "complete": true
+  },
+  {
+   "repo": "rust-unofficial/awesome-rust",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "c82e978b70073344f232e0c8cc3b001d55f0ed63",
+   "complete": true
+  },
+  {
+   "repo": "spring-projects/spring-framework",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "9a9585e39882b9411be27d6c039787d9d48fe7e7",
+   "complete": true
+  },
+  {
+   "repo": "jquery/jquery",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "effd615f0009e927dfd1f41d04fb6073478076d4",
+   "complete": true
+  },
+  {
+   "repo": "meilisearch/meilisearch",
+   "category": "banned",
+   "confidence": "low",
+   "commit_sha": "9dbecfa0ac597316b5ed24c945d20b13369039be",
+   "complete": true
+  },
+  {
+   "repo": "jellyfin/jellyfin",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "6b786b36eed49bf83860d9b652b96f475aeb2668",
+   "complete": true
+  },
+  {
+   "repo": "router-for-me/CLIProxyAPI",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "38fe929502f19f7cce03c69c19aacddf30f1ef5e",
+   "complete": true
+  },
+  {
+   "repo": "go-gitea/gitea",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "b8886715945e669506e3deb058fe3181d3832081",
+   "complete": true
+  },
+  {
+   "repo": "rails/rails",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "1b1a809125aea2978776f7c14aeacfcd49112b14",
+   "complete": true
+  },
+  {
+   "repo": "bannedbook/fanqiang",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "f8de930db563bd9c22fb061d0c8d4e8b95fc9d06",
+   "complete": true
+  },
+  {
+   "repo": "multica-ai/multica",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "f66e0c5bec74e4aaeb948c65844c40444ba803af",
+   "complete": true
+  },
+  {
+   "repo": "h5bp/html5-boilerplate",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "7fa0bd6c9e6818d11a1a7efad56fe715ae56d848",
+   "complete": true
+  },
+  {
+   "repo": "typst/typst",
+   "category": "banned",
+   "confidence": "low",
+   "commit_sha": "4dd1e4cab324b56927f598eb36c698f6a4e08825",
+   "complete": true
+  },
+  {
+   "repo": "aaif-goose/goose",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "8256b9ac9ffae7d19ef1db1f57e37f84c44915bd",
+   "complete": true
+  },
+  {
+   "repo": "FuelLabs/fuel-core",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "8bd82d4d1ff4e6da7a0e9febbe96e6a864d79f1f",
+   "complete": true
+  },
+  {
+   "repo": "PowerShell/PowerShell",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "5fe72b3dfa98de0512497e1f4e4d8aaba99ecd59",
+   "complete": true
+  },
+  {
+   "repo": "alibaba/open-code-review",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "d4f568f71d3a9d5c5ec972791b1509e40cd31ad1",
+   "complete": true
+  },
+  {
+   "repo": "WerWolv/ImHex",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "308b0b1b34b89976985b5dba0e52eabaf1d77d42",
+   "complete": true
+  },
+  {
+   "repo": "gatsbyjs/gatsby",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "0ac6c88a72c4dfd4d541e3ac43c664343e8e15b6",
+   "complete": true
+  },
+  {
+   "repo": "azl397985856/leetcode",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "bbc0f0763603e950dcb33cc3ae4b2719b35efe45",
+   "complete": true
+  },
+  {
+   "repo": "ggml-org/whisper.cpp",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "092fa10992dec2a91680591697c857b566db7150",
+   "complete": true
+  },
+  {
+   "repo": "romkatv/powerlevel10k",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "50a35cc8d9f1488d18fb8aea6cddcfc31189cc9f",
+   "complete": true
+  },
+  {
+   "repo": "anthropics/claude-cookbooks",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "8ad5de647d4f0f50c95d74aabc8aa20a3f70cdd3",
+   "complete": true
+  },
+  {
+   "repo": "wagoodman/dive",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "75dea9077a4f0c0328cf0084d9b1e32f2f22df87",
+   "complete": true
+  },
+  {
+   "repo": "dockur/windows",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "013ea27498e0e820a46b3861a0fa047d5b19d846",
+   "complete": true
+  },
+  {
+   "repo": "mozilla/pdf.js",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "98100629a8ab3c6625c82a5ab5b9a82457f415f3",
+   "complete": true
+  },
+  {
+   "repo": "vercel-labs/agent-browser",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "f0a98351ec920bd826b22c98dacf8414f04b9832",
+   "complete": true
+  },
+  {
+   "repo": "obsidianmd/obsidian-skills",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "ba213967e94fcf0bff173d810f7a4465856b7eca",
+   "complete": true
+  },
+  {
+   "repo": "JetBrains/kotlin",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "97cde05cdd65e7d409c0c4acbcddedc3ee3701e7",
+   "complete": true
+  },
+  {
+   "repo": "poteto/hiring-without-whiteboards",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "c05c419ca907ee3c08e4caabef41f28e71fa1087",
+   "complete": true
+  },
+  {
+   "repo": "jesseduffield/lazydocker",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "596fd59df6b088bb1e38c5bb08cd4fbf28b3ebfb",
+   "complete": true
+  },
+  {
+   "repo": "JustVugg/colibri",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "e479104ae01bdc40ce81e675299b1d230891b321",
+   "complete": true
+  },
+  {
+   "repo": "herdrdev/herdr",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "e8d7d9705a7a2c89cef4dd42079379f05685af87",
+   "complete": true
+  },
+  {
+   "repo": "DavidHDev/react-bits",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "37f53df7efb61238b0fea9ea8be74e3cce62b959",
+   "complete": true
+  },
+  {
+   "repo": "etcd-io/etcd",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "4e090c033abc29636df2f844fbdd363adffcd90b",
+   "complete": true
+  },
+  {
+   "repo": "dbeaver/dbeaver",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "a52f2a0bbcf4a02ac9fd826bbcf90adc4000c55b",
+   "complete": true
+  },
+  {
+   "repo": "QuantumNous/new-api",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "c27abf36268001ebfcf4f478ba0f7bae1c19de22",
+   "complete": true
+  },
+  {
+   "repo": "prettier/prettier",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "4772dcfad89966f1639f0832713a03e056edfbb3",
+   "complete": true
+  },
+  {
+   "repo": "apple/container",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "16e8d488ee1d9ede35ab9cf21b9973ffdc9361b3",
+   "complete": true
+  },
+  {
+   "repo": "skylot/jadx",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "d6c683fc940c4687387f8ae9188c7b8eecc91c85",
+   "complete": true
+  },
+  {
+   "repo": "google/guava",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "2705387e3a36fc1a552806cd83658344ca2dba3d",
+   "complete": true
+  },
+  {
+   "repo": "astral-sh/ruff",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "fb327ea1a182773d5b327ff27add446def9ee746",
+   "complete": true
+  },
+  {
+   "repo": "ethereum/go-ethereum",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "bbafd66b66f5e37e877bf1efe3506ad74a6eda98",
+   "complete": true
+  },
+  {
+   "repo": "ClickHouse/ClickHouse",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "1635d6a3685de4b28eb5948369a383f83bf8ec44",
+   "complete": true
+  },
+  {
+   "repo": "nlohmann/json",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "322063822f66533bb81ef8e938fd07e5f6394917",
+   "complete": true
+  },
+  {
+   "repo": "team-spotube/spotube",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "5768ad7568665130bdbc057348bc2b9e1cf8cc38",
+   "complete": true
+  },
+  {
+   "repo": "huginn/huginn",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "4d4fa3f49383bfd621b6b7abc05e1c70fa0c0001",
+   "complete": true
+  },
+  {
+   "repo": "mastodon/mastodon",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "6c29cb4b9c1f8b3f9a1be23f0efb9c5ac64155a3",
+   "complete": true
+  },
+  {
+   "repo": "MHSanaei/3x-ui",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "d0dc4550c2330f53a4b6804756578bdb366d465f",
+   "complete": true
+  },
+  {
+   "repo": "tmux/tmux",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "fd663d983c4340d26f64bea7e61c901013f93c3b",
+   "complete": true
+  },
+  {
+   "repo": "mudler/LocalAI",
+   "category": "restricted",
+   "confidence": "high",
+   "commit_sha": "31ff963da52df519b95d8dd1e387d5a7d255cb09",
+   "complete": true
+  },
+  {
+   "repo": "metabase/metabase",
+   "category": "needs-review",
+   "confidence": "low",
+   "commit_sha": "1d552d9bd19b3d170986324435596d4cc688db12",
+   "complete": true
+  },
+  {
+   "repo": "Homebrew/brew",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "cc5db66abe5cf301baa1f3b618824e1e20f11ceb",
+   "complete": true
+  },
+  {
+   "repo": "x64dbg/x64dbg",
+   "category": "restricted",
+   "confidence": "low",
+   "commit_sha": "85590fbac9bdfe3600355c04c9f05dc5d36d4973",
+   "complete": true
+  },
+  {
+   "repo": "hashicorp/terraform",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "279a0c2487913cb700da99fd5077d8ef7d486f04",
+   "complete": true
+  },
+  {
+   "repo": "jgthms/bulma",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "7e6e20c230b07d75ee794ad2b7ecc84bbe4292f6",
+   "complete": true
+  },
+  {
+   "repo": "bevyengine/bevy",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "93af76a2a6228281b4c5c486ec2d8fa5807f0ca2",
+   "complete": true
+  },
+  {
+   "repo": "bigskysoftware/htmx",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "51c3e67bcedc5568b2a968b079888f13aedf4eb7",
+   "complete": true
+  },
+  {
+   "repo": "JuliaLang/julia",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "8f8f05117dddb6815c70cdd6da2978c56b5aa8ab",
+   "complete": true
+  },
+  {
+   "repo": "DeusData/codebase-memory-mcp",
+   "category": "disclosure-required",
+   "confidence": "high",
+   "commit_sha": "9a4da7a314833d8d965b74612e1f25fef5371861",
+   "complete": true
+  },
+  {
+   "repo": "iamkun/dayjs",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "d3e43be0489ff1d010aca42b3115b6059215ed60",
+   "complete": true
+  },
+  {
+   "repo": "jeecgboot/JeecgBoot",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "6184e2448fbf0a84e7f638596324c69c1a747549",
+   "complete": true
+  },
+  {
+   "repo": "usebruno/bruno",
+   "category": "disclosure-required",
+   "confidence": "low",
+   "commit_sha": "349f6a5223299c6633fba613cacf86884ed2de3d",
+   "complete": true
+  },
+  {
+   "repo": "nvm-windows/nvm",
+   "category": "no-policy-found",
+   "confidence": "high",
+   "commit_sha": "e7311bba844b37b7f67b29c5b44b8db574ede72e",
+   "complete": true
+  },
+  {
+   "repo": "ReactiveX/RxJava",
+   "category": "banned",
+   "confidence": "low",
+   "commit_sha": "317ce3607cdab21aed03d5b0c11dfc978aea1548",
+   "complete": true
+  }
+ ]
+}

@@ -15,6 +15,7 @@ note to `docs/schema.md` and `CHANGELOG.md`; open an issue first so the maintain
 | `discover.py` | decides which files are candidates (pure) | `tests/test_discover*.py` |
 | `fetch.py` | all network and disk I/O: GitHub REST, raw files, local clones, the cache | `tests/test_fetch.py`, `tests/_fakes.py` |
 | `report.py` | renders a report as text, JSON, markdown or SARIF; neutralises untrusted text | `tests/test_report.py` |
+| `scripts/build_index.py`, `index/`, `.github/workflows/index.yml` | weekly policy index (not packaged; reuses `cli.analyze`, adds repository search only) | `tests/test_build_index.py` |
 | `action.yml`, `.github/workflows/` | the GitHub Action and the project's own CI | `tests/test_action_yaml.py` |
 
 Documentation lives in `README.md`, `AI-USE.md` and `docs/`; `THIRD-PARTY-NOTICES.md` carries the MIT notice of

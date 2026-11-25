@@ -139,7 +139,7 @@ class ActionFilesTest(unittest.TestCase):
         return [ACTION, *_workflow_files()]
 
     def test_expected_workflows_exist(self):
-        for name in ("ci.yml", "self-test.yml", "release.yml", "scorecard.yml"):
+        for name in ("ci.yml", "self-test.yml", "release.yml", "scorecard.yml", "index.yml"):
             self.assertTrue((WORKFLOWS / name).is_file(), name)
         self.assertTrue(DEPENDABOT.is_file())
 
@@ -172,9 +172,21 @@ class ActionFilesTest(unittest.TestCase):
         for path in _workflow_files():
             text = path.read_text(encoding="utf-8")
             self.assertRegex(text, r"(?m)^permissions:\n  contents: read\n", path.name)
-            self.assertNotRegex(text, r"(?m)^\s+(?:contents|security-events|actions): write", path.name)
+            if path.name != "index.yml":  # the weekly index has one commit job, checked in the next test
+                self.assertNotRegex(text, r"(?m)^\s+(?:contents|security-events|actions): write", path.name)
             if path.name not in ("release.yml", "scorecard.yml"):
                 self.assertNotRegex(text, r"(?m)^\s+id-token: write", path.name)
+
+    def test_index_workflow_writes_only_in_the_commit_job(self):
+        text = (WORKFLOWS / "index.yml").read_text(encoding="utf-8")
+        scan, commit = text.split("\n  commit:\n", 1)
+        self.assertEqual(re.findall(r"(?m)^\s+\w[\w-]*: write", text), ["      contents: write"])
+        self.assertNotIn(": write", scan)
+        self.assertIn("contents: write", commit)
+        self.assertIn("scripts/build_index.py", scan)
+        self.assertNotIn("build_index", commit)  # no scan code runs where the write token exists
+        self.assertIn('cron: "0 4 * * 1"', text)
+        self.assertIn("workflow_dispatch:", text)
 
     def test_scorecard_workflow_is_least_privilege_and_publishes(self):
         text = (WORKFLOWS / "scorecard.yml").read_text(encoding="utf-8")
