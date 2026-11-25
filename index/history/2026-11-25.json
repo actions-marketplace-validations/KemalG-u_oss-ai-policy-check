@@ -8,10 +8,11 @@
   "classifier": "rules"
  },
  "counts": {
-  "banned": 12,
-  "restricted": 63,
-  "disclosure-required": 45,
-  "needs-review": 63,
+  "banned": 3,
+  "restricted": 17,
+  "possible": 55,
+  "disclosure-required": 44,
+  "needs-review": 64,
   "permitted": 5,
   "no-policy-found": 112,
   "unreadable": 0
@@ -19,7 +20,7 @@
  "repos": [
   {
    "repo": "public-apis/public-apis",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "high",
    "commit_sha": "9fb3bdb62643400aaebee03a2ecce0cd1ec934eb",
    "complete": true
@@ -28,7 +29,7 @@
    "repo": "morluto/rea",
    "category": "disclosure-required",
    "confidence": "high",
-   "commit_sha": "6e771da08eb17a82d34c7f7e0b09d13484193a17",
+   "commit_sha": "c58de7f77efc738b414376fa7b7a1e98b1499c99",
    "complete": true
   },
   {
@@ -47,9 +48,9 @@
   },
   {
    "repo": "openclaw/openclaw",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "high",
-   "commit_sha": "40b23868a5db2db4f198380a2ffc2547cdaaa53d",
+   "commit_sha": "8b3aa88a18ba5aa3378ea9cb79dbf6ae2e34498c",
    "complete": false
   },
   {
@@ -96,7 +97,7 @@
   },
   {
    "repo": "deepseek-ai/deepseek-harness",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "4b399c39a6d1479cd84ca591b4d7c88e24d38a96",
    "complete": true
@@ -105,7 +106,7 @@
    "repo": "NousResearch/hermes-agent",
    "category": "needs-review",
    "confidence": "low",
-   "commit_sha": "b4db4842723a89842faaed766aba2ce588226e31",
+   "commit_sha": "22facbc26e2be31a4a3c0708c05fa52d00f2a1b9",
    "complete": true
   },
   {
@@ -126,7 +127,7 @@
    "repo": "anomalyco/opencode",
    "category": "disclosure-required",
    "confidence": "low",
-   "commit_sha": "0caad64533a160451808b78623ed7614d0330bfe",
+   "commit_sha": "3ac14c053c77413c7e2a3e115c017911ed80ae27",
    "complete": true
   },
   {
@@ -138,9 +139,9 @@
   },
   {
    "repo": "n8n-io/n8n",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "0d4ba563498b01762376f66eedefbfa8a0d90048",
+   "commit_sha": "ce2f41b19e369aed7ef319210a61a81f58d4de7c",
    "complete": false
   },
   {
@@ -168,7 +169,7 @@
    "repo": "tensorflow/tensorflow",
    "category": "no-policy-found",
    "confidence": "high",
-   "commit_sha": "40db3fe9bd90e24240d3e3cf39d7f9f93c0b85c2",
+   "commit_sha": "6cc469e91316b212f57c5cd3d1e5c7debd08b9c5",
    "complete": true
   },
   {
@@ -210,7 +211,7 @@
    "repo": "microsoft/vscode",
    "category": "needs-review",
    "confidence": "low",
-   "commit_sha": "f109399844b0ca71bc53385510ae8d28ce0d4fbd",
+   "commit_sha": "7365dbb2fe61e951241c12866affa6af33cdc080",
    "complete": true
   },
   {
@@ -236,7 +237,7 @@
   },
   {
    "repo": "Significant-Gravitas/AutoGPT",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "high",
    "commit_sha": "dd0b5f73266ea5f3dfab37ebccd93049af58e106",
    "complete": false
@@ -264,7 +265,7 @@
   },
   {
    "repo": "f/prompts.chat",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "029fa0783a31070ca821710a5347970a228725f5",
    "complete": true
@@ -287,7 +288,7 @@
    "repo": "huggingface/transformers",
    "category": "disclosure-required",
    "confidence": "low",
-   "commit_sha": "706bd9e063c27dacc5daacd3bc7c6c6811fc4941",
+   "commit_sha": "a8d55faa6fa1897e4e15b9315317ccc7c8d3ad22",
    "complete": true
   },
   {
@@ -313,7 +314,7 @@
   },
   {
    "repo": "farion1231/cc-switch",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "high",
    "commit_sha": "aa4a8c63365d1d3ed2eb27872a7da6a0709d0629",
    "complete": true
@@ -322,7 +323,7 @@
    "repo": "anthropics/claude-code",
    "category": "needs-review",
    "confidence": "low",
-   "commit_sha": "fba6b0a031e21f7c8f936b711e507a057d3d8d0d",
+   "commit_sha": "4548c9e144f4756bf76f5f587f35efaa14d55823",
    "complete": true
   },
   {
@@ -357,7 +358,7 @@
    "repo": "github/spec-kit",
    "category": "needs-review",
    "confidence": "low",
-   "commit_sha": "f912acbef22e373f68e6c925216cc8d2ad78964d",
+   "commit_sha": "dfe33ea93b090c0938b7a3facaa615a073ae3fc0",
    "complete": true
   },
   {
@@ -369,7 +370,7 @@
   },
   {
    "repo": "Comfy-Org/ComfyUI",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "a2103ae69d98d8ef94c150f5a472b89775eed929",
    "complete": true
@@ -397,7 +398,7 @@
   },
   {
    "repo": "vercel/next.js",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "ea5a73353a7b8509555d885823971a21b6f4a489",
    "complete": true
@@ -411,9 +412,9 @@
   },
   {
    "repo": "garrytan/gstack",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "7eba5caf6f5fce30810bc265ee077b3150c4af47",
+   "commit_sha": "959df8ccc4b7a5879469743c7076d66e6d0918dd",
    "complete": true
   },
   {
@@ -425,7 +426,7 @@
   },
   {
    "repo": "microsoft/PowerToys",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "99845fc9a8d93f755920fc931697069fda7baa06",
    "complete": true
@@ -441,12 +442,12 @@
    "repo": "stablyai/orca",
    "category": "disclosure-required",
    "confidence": "low",
-   "commit_sha": "e347c1c21a0e00148d8a90e6d5020ce041cda459",
+   "commit_sha": "84a343f2a6d6e46d754574d3323b5a6307f2d73d",
    "complete": true
   },
   {
    "repo": "openai/codex",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "06f334aa4b053023c5b4199dde0ba9c004d64820",
    "complete": true
@@ -460,9 +461,9 @@
   },
   {
    "repo": "ggml-org/llama.cpp",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "244640b7f26e2a7301b27a24edc4f7feaf97d52f",
+   "commit_sha": "94a1e4b722d4bff82a0319230682cb54e29ea4e7",
    "complete": true
   },
   {
@@ -474,7 +475,7 @@
   },
   {
    "repo": "rustdesk/rustdesk",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "a0c0963c483fc8f1aeed4547787d1673adcb583c",
    "complete": true
@@ -504,7 +505,7 @@
    "repo": "react/react-native",
    "category": "no-policy-found",
    "confidence": "high",
-   "commit_sha": "9d6a2497fb145f7e24303620a42f02cfa993ad78",
+   "commit_sha": "783675cd08300ea5193ed17aea6516cd08504f22",
    "complete": true
   },
   {
@@ -525,7 +526,7 @@
    "repo": "nodejs/node",
    "category": "restricted",
    "confidence": "high",
-   "commit_sha": "478c2eea871d09554530ddf298d2bb2fceab077c",
+   "commit_sha": "1106479d7e85701e1dcad0f3dc43716584685702",
    "complete": true
   },
   {
@@ -551,7 +552,7 @@
   },
   {
    "repo": "rust-lang/rust",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "bc9132daa5c0be572ebb81304f6039d947298e67",
    "complete": true
@@ -600,7 +601,7 @@
   },
   {
    "repo": "thedotmack/claude-mem",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "11b47f9f4b8dc3614fab7452647f578886468849",
    "complete": true
@@ -635,9 +636,9 @@
   },
   {
    "repo": "paperclipai/paperclip",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "high",
-   "commit_sha": "0609da79fbb9f895bdde21632505e5ec15c36e70",
+   "commit_sha": "2d065677959b585065ff3fec8718156a4cf6f41d",
    "complete": false
   },
   {
@@ -670,16 +671,16 @@
   },
   {
    "repo": "tauri-apps/tauri",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "7d4c45824ce19c1387287c4a51596eca751880f0",
    "complete": true
   },
   {
    "repo": "microsoft/TypeScript",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "b9f8778ca044b5cd5c97e047ce11e5dc695ce987",
+   "commit_sha": "298282dedae70ac94c5b9c769bd4dde0089f4349",
    "complete": true
   },
   {
@@ -698,7 +699,7 @@
   },
   {
    "repo": "nexu-io/open-design",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "high",
    "commit_sha": "5fdcc3db1e31bd4fa70f673041b78e87977507c3",
    "complete": true
@@ -712,16 +713,16 @@
   },
   {
    "repo": "google-gemini/gemini-cli",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "08e9a20f749aefcbda38622ac757899c3d6216e0",
+   "commit_sha": "3e349a2214f733ca871538cd4f0afcebcbe3186e",
    "complete": true
   },
   {
    "repo": "rasbt/LLMs-from-scratch",
    "category": "needs-review",
    "confidence": "low",
-   "commit_sha": "22c637fdf9aa2f5fdd39c2cc80c1d36b4ab7d8d8",
+   "commit_sha": "edf9488fce0cab4762b877864e9c2a9a3ef6b5a5",
    "complete": true
   },
   {
@@ -742,12 +743,12 @@
    "repo": "pytorch/pytorch",
    "category": "restricted",
    "confidence": "high",
-   "commit_sha": "cf717e386a86c46b1990ec31722644d660057948",
+   "commit_sha": "4aa3f89f9599a9542fd6d6db8664bbd578b01b08",
    "complete": true
   },
   {
    "repo": "microsoft/terminal",
-   "category": "banned",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "43c7ec76a2eb64dac184358fbad25040c9f4a24f",
    "complete": true
@@ -756,7 +757,7 @@
    "repo": "ruvnet/RuView",
    "category": "needs-review",
    "confidence": "low",
-   "commit_sha": "3cc1585f0b341fae724dcb803f76a2498d49d756",
+   "commit_sha": "20fba4d97bb718f3f5a8e165ad810442d481443e",
    "complete": true
   },
   {
@@ -789,7 +790,7 @@
   },
   {
    "repo": "microsoft/playwright",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "b9cff8a68a090c27d29d856747265732468acff0",
    "complete": true
@@ -810,7 +811,7 @@
   },
   {
    "repo": "tt-a1i/archify",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "aff5c2b2a0f8b6cdb187f5f121e965a495833f10",
    "complete": true
@@ -882,14 +883,14 @@
    "repo": "puppeteer/puppeteer",
    "category": "no-policy-found",
    "confidence": "high",
-   "commit_sha": "95b7f8507a3141a93422e2959acd18a42fd0a9a6",
+   "commit_sha": "0e884d76e73b99dc6858c777162fb844e3cd1c82",
    "complete": true
   },
   {
    "repo": "zed-industries/zed",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "552644414c580ed540f027f6439881ea5c88d02a",
+   "commit_sha": "65bbc884e995e9ad9fb0e768ead53e1bec638ed4",
    "complete": true
   },
   {
@@ -931,7 +932,7 @@
    "repo": "home-assistant/core",
    "category": "restricted",
    "confidence": "high",
-   "commit_sha": "2967a24ca1e3e59f2a9909bbf03f3708687b7711",
+   "commit_sha": "bc8ad9b88c664cb78631132ff6e95b7526504887",
    "complete": true
   },
   {
@@ -964,7 +965,7 @@
   },
   {
    "repo": "storybookjs/storybook",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "a066aa49a6916f388fb58a932b4d8bb9ee2a2d44",
    "complete": true
@@ -978,21 +979,21 @@
   },
   {
    "repo": "koala73/worldmonitor",
-   "category": "disclosure-required",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "eabe646f1e5e47c2f1866691dc21608665e3ae83",
+   "commit_sha": "15db6d39b7a0edff498b9f1417b81d5196d26c3f",
    "complete": true
   },
   {
    "repo": "syncthing/syncthing",
-   "category": "banned",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "1107b3cd11dbe267a8b80bbe1f89fb86a070b5c3",
    "complete": true
   },
   {
    "repo": "bitcoin/bitcoin",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "4cf0f7c80cd4da7c7f79a958f7455c4bfd1f86aa",
    "complete": true
@@ -1015,14 +1016,14 @@
    "repo": "heygen-com/hyperframes",
    "category": "needs-review",
    "confidence": "low",
-   "commit_sha": "a3e0903763450b9cecfbc72f0b6e47fd64dff6cd",
+   "commit_sha": "9f1b1b437c650b79e65ea2583b77c2b933baa6e4",
    "complete": true
   },
   {
    "repo": "sveltejs/svelte",
    "category": "no-policy-found",
    "confidence": "high",
-   "commit_sha": "827be1e4ef3bb98e852aa63af44decef8b7a7cba",
+   "commit_sha": "9cb9328de02cc66b823b874fa6144470dd58b745",
    "complete": true
   },
   {
@@ -1057,12 +1058,12 @@
    "repo": "lobehub/lobehub",
    "category": "disclosure-required",
    "confidence": "high",
-   "commit_sha": "0aefcd03537d01e603cba86090e04d1cb23c5eef",
+   "commit_sha": "8991f18490ff169036e79d92f93fced11e584cfa",
    "complete": true
   },
   {
    "repo": "bytedance/deer-flow",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "aa9913c4cc2d3ba537d78a48de9ef531fdcbbb05",
    "complete": true
@@ -1111,7 +1112,7 @@
   },
   {
    "repo": "jesseduffield/lazygit",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "10f045b8f93232a03e8522f924e65681b0b210d8",
    "complete": true
@@ -1216,7 +1217,7 @@
   },
   {
    "repo": "obsproject/obs-studio",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "0c790bd0151fb9f574867e025ecf57e6eedc58e2",
    "complete": true
@@ -1237,7 +1238,7 @@
   },
   {
    "repo": "caddyserver/caddy",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "679806f92d49e5b494200f2e90a93f228203a418",
    "complete": true
@@ -1253,21 +1254,21 @@
    "repo": "pingdotgg/t3code",
    "category": "disclosure-required",
    "confidence": "low",
-   "commit_sha": "e36800e61babed824d055393d62fedc961e26e3b",
+   "commit_sha": "93b8dc3465ef829c8aa3b375190822550387d33f",
    "complete": true
   },
   {
    "repo": "elastic/elasticsearch",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "3a339c93c9169d90260914cb7e6a2b7be740feff",
+   "commit_sha": "a5dfeb85058ccbd44cef78c3e439118b2453a117",
    "complete": true
   },
   {
    "repo": "grafana/grafana",
    "category": "permitted",
    "confidence": "high",
-   "commit_sha": "04feb18b376f4c14f0bf46637269db7e68828321",
+   "commit_sha": "aa13070970975aeedd7d91ecfcbb07554c8aee00",
    "complete": true
   },
   {
@@ -1300,7 +1301,7 @@
   },
   {
    "repo": "ocornut/imgui",
-   "category": "banned",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "667c01946451f71f7852aeda8acbdf41d1b9f36a",
    "complete": true
@@ -1314,7 +1315,7 @@
   },
   {
    "repo": "tw93/Mole",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "ff7aac5abb24a806a00081656e70b4e71e506b04",
    "complete": true
@@ -1328,7 +1329,7 @@
   },
   {
    "repo": "danielmiessler/SecLists",
-   "category": "banned",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "db925350dc6512707b51427caf1822aa31f73c0e",
    "complete": true
@@ -1349,7 +1350,7 @@
   },
   {
    "repo": "cathrynlavery/diagram-design",
-   "category": "banned",
+   "category": "needs-review",
    "confidence": "low",
    "commit_sha": "b228c5d77794a84150fca41b22940bb316b1398d",
    "complete": true
@@ -1419,16 +1420,16 @@
   },
   {
    "repo": "shanraisshan/claude-code-best-practice",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "53e34a13a163b621ef3f91dae4665c74694398a0",
    "complete": true
   },
   {
    "repo": "LadybirdBrowser/ladybird",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "aef80893330f71f3b79be6eec10dc42516f6294c",
+   "commit_sha": "97e3c2459b60a5306b3371f6fc5d29cd866c38ba",
    "complete": true
   },
   {
@@ -1463,7 +1464,7 @@
    "repo": "chartjs/Chart.js",
    "category": "no-policy-found",
    "confidence": "high",
-   "commit_sha": "76ba6090838af406251fd3e6924730283ed992b0",
+   "commit_sha": "a2ef2865c9bfd8742384686c2077df374bed6aa9",
    "complete": true
   },
   {
@@ -1477,7 +1478,7 @@
    "repo": "bilawalsidhu/gods-eye-view",
    "category": "no-policy-found",
    "confidence": "high",
-   "commit_sha": "47cbfd63cc0b2549275c2269e605d4b2a3b33286",
+   "commit_sha": "c8b09e46e2452712679d981d023f00f5ab20d4be",
    "complete": true
   },
   {
@@ -1503,14 +1504,14 @@
   },
   {
    "repo": "alacritty/alacritty",
-   "category": "banned",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "791efff6d74c66bee390c259e322626ca93aadb6",
    "complete": true
   },
   {
    "repo": "warpdotdev/warp",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "e3525c726d885830a66474fd468ac8014dbf2ec8",
    "complete": true
@@ -1545,7 +1546,7 @@
   },
   {
    "repo": "rust-lang/rustlings",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "f7b9b3c5882a1a43275130b95142d94f847526f5",
    "complete": true
@@ -1568,7 +1569,7 @@
    "repo": "ghostty-org/ghostty",
    "category": "restricted",
    "confidence": "high",
-   "commit_sha": "70cee5810605052227608295f2b097322d20e49b",
+   "commit_sha": "107f44866c1af539f44f72a636c742fc1f604543",
    "complete": true
   },
   {
@@ -1601,9 +1602,9 @@
   },
   {
    "repo": "penpot/penpot",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "a0bbafaf12c60804fde2c03a510ed62049e0942a",
+   "commit_sha": "e6f3d21dce2a094ce14c4576279f4b50219b80e1",
    "complete": true
   },
   {
@@ -1631,7 +1632,7 @@
    "repo": "boykopovar/AnyPS5",
    "category": "disclosure-required",
    "confidence": "low",
-   "commit_sha": "102cad67dae5ca685a320af12f7ae32ff5af792e",
+   "commit_sha": "66f88154a4cd669933c752237ab286056f788230",
    "complete": false
   },
   {
@@ -1650,7 +1651,7 @@
   },
   {
    "repo": "Nutlope/hallmark",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "04977e15f3dfd6ee4b74c887dac3eb52665d6c92",
    "complete": true
@@ -1678,7 +1679,7 @@
   },
   {
    "repo": "spring-projects/spring-framework",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "9a9585e39882b9411be27d6c039787d9d48fe7e7",
    "complete": true
@@ -1692,7 +1693,7 @@
   },
   {
    "repo": "meilisearch/meilisearch",
-   "category": "banned",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "9dbecfa0ac597316b5ed24c945d20b13369039be",
    "complete": true
@@ -1713,7 +1714,7 @@
   },
   {
    "repo": "go-gitea/gitea",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "b8886715945e669506e3deb058fe3181d3832081",
    "complete": true
@@ -1722,7 +1723,7 @@
    "repo": "rails/rails",
    "category": "no-policy-found",
    "confidence": "high",
-   "commit_sha": "1b1a809125aea2978776f7c14aeacfcd49112b14",
+   "commit_sha": "5f98db3562d5cb9f2d3363d0e08fae90ab58a9c6",
    "complete": true
   },
   {
@@ -1734,9 +1735,9 @@
   },
   {
    "repo": "multica-ai/multica",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "f66e0c5bec74e4aaeb948c65844c40444ba803af",
+   "commit_sha": "aa1fa4ba08bb45d462d4b97b51345a930ac1168a",
    "complete": true
   },
   {
@@ -1748,7 +1749,7 @@
   },
   {
    "repo": "typst/typst",
-   "category": "banned",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "4dd1e4cab324b56927f598eb36c698f6a4e08825",
    "complete": true
@@ -1804,9 +1805,9 @@
   },
   {
    "repo": "ggml-org/whisper.cpp",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "092fa10992dec2a91680591697c857b566db7150",
+   "commit_sha": "868e55578ea5f69550c046da22aefe11dc6e04c0",
    "complete": true
   },
   {
@@ -1916,7 +1917,7 @@
   },
   {
    "repo": "QuantumNous/new-api",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "c27abf36268001ebfcf4f478ba0f7bae1c19de22",
    "complete": true
@@ -1965,9 +1966,9 @@
   },
   {
    "repo": "ClickHouse/ClickHouse",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
-   "commit_sha": "1635d6a3685de4b28eb5948369a383f83bf8ec44",
+   "commit_sha": "b66f7eea04471484d55102a3df26ec4f4e4c53a1",
    "complete": true
   },
   {
@@ -2016,26 +2017,26 @@
    "repo": "mudler/LocalAI",
    "category": "restricted",
    "confidence": "high",
-   "commit_sha": "31ff963da52df519b95d8dd1e387d5a7d255cb09",
+   "commit_sha": "3ecc82d605c036fd8ba333e590cf86430a65887b",
    "complete": true
   },
   {
    "repo": "metabase/metabase",
    "category": "needs-review",
    "confidence": "low",
-   "commit_sha": "1d552d9bd19b3d170986324435596d4cc688db12",
+   "commit_sha": "9c21654c21c68f69ee1e74317837c9678fb988b6",
    "complete": true
   },
   {
    "repo": "Homebrew/brew",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "cc5db66abe5cf301baa1f3b618824e1e20f11ceb",
    "complete": true
   },
   {
    "repo": "x64dbg/x64dbg",
-   "category": "restricted",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "85590fbac9bdfe3600355c04c9f05dc5d36d4973",
    "complete": true
@@ -2072,7 +2073,7 @@
    "repo": "JuliaLang/julia",
    "category": "disclosure-required",
    "confidence": "high",
-   "commit_sha": "8f8f05117dddb6815c70cdd6da2978c56b5aa8ab",
+   "commit_sha": "b3ac3a30ec5ce0e8c29bc8cdfa1e65af43572fe7",
    "complete": true
   },
   {
@@ -2107,12 +2108,12 @@
    "repo": "nvm-windows/nvm",
    "category": "no-policy-found",
    "confidence": "high",
-   "commit_sha": "e7311bba844b37b7f67b29c5b44b8db574ede72e",
+   "commit_sha": "6421542e836619c8aa281965bb094dfc6845e364",
    "complete": true
   },
   {
    "repo": "ReactiveX/RxJava",
-   "category": "banned",
+   "category": "possible",
    "confidence": "low",
    "commit_sha": "317ce3607cdab21aed03d5b0c11dfc978aea1548",
    "complete": true
