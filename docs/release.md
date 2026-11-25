@@ -55,8 +55,9 @@ Afterwards:
 - `uvx oss-ai-policy-check --version` in a clean shell prints the new version.
 - The PyPI file pages show a provenance attestation (PEP 740); the workflow passes `attestations: true` to
   `pypa/gh-action-pypi-publish`, which signs the files through the same Trusted Publishing identity.
-- Create a GitHub Release from the tag (Releases, "Draft a new release", choose the tag, paste the changelog
-  section).
+- The GitHub Release page is created by the `github-release` job after `publish` succeeds (generated notes; it
+  skips quietly when a Release for the tag already exists). Nothing to do by hand; edit the notes on the Release
+  page if the changelog section should replace them.
 - The GitHub Action needs no extra step: `uses: KemalG-u/oss-ai-policy-check@v0.3.0` installs the code at that
   tag from its own checkout.
 

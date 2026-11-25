@@ -172,7 +172,7 @@ class ActionFilesTest(unittest.TestCase):
         for path in _workflow_files():
             text = path.read_text(encoding="utf-8")
             self.assertRegex(text, r"(?m)^permissions:\n  contents: read\n", path.name)
-            if path.name != "index.yml":  # the weekly index has one commit job, checked in the next test
+            if path.name not in ("index.yml", "release.yml"):  # their single write job is checked in its own test
                 self.assertNotRegex(text, r"(?m)^\s+(?:contents|security-events|actions): write", path.name)
             if path.name not in ("release.yml", "scorecard.yml"):
                 self.assertNotRegex(text, r"(?m)^\s+id-token: write", path.name)
@@ -201,6 +201,29 @@ class ActionFilesTest(unittest.TestCase):
         self.assertIn("id-token: write", publish)
         self.assertIn("name: pypi", publish)
         self.assertIn("pypa/gh-action-pypi-publish@", publish)
+
+    def test_release_workflow_writes_contents_only_in_the_github_release_job(self):
+        text = (WORKFLOWS / "release.yml").read_text(encoding="utf-8")
+        self.assertEqual(re.findall(r"(?m)^\s+\w[\w-]*: write", text),
+                         ["      id-token: write", "      contents: write"])
+        head, release = text.split("\n  github-release:\n", 1)
+        self.assertNotIn("contents: write", head)
+        self.assertIn("contents: write", release)
+        self.assertNotIn("id-token", release)
+        self.assertRegex(release, r"(?m)^    needs: publish\s*$")
+        self.assertNotIn("uses:", release)  # no third-party code runs where the write token exists
+        self.assertIn("GH_TOKEN: ${{ github.token }}", release)
+        self.assertIn('gh release create "${TAG}" --verify-tag --generate-notes --title "${TAG}"', release)
+
+    def test_github_release_step_is_idempotent(self):
+        text = (WORKFLOWS / "release.yml").read_text(encoding="utf-8")
+        release = text.split("\n  github-release:\n", 1)[1]
+        (block,) = run_blocks(release)
+        view = block.index('gh release view "${TAG}"')
+        create = block.index("gh release create")
+        self.assertLess(view, create)  # the existence check guards the create
+        self.assertRegex(block, r'(?s)if gh release view "\$\{TAG\}"[^\n]*; then\n.*\n\s*else\n\s*gh release create')
+        self.assertEqual(unsafe_run_expressions(release), [])
 
     def test_checkout_does_not_persist_credentials(self):
         for path in _workflow_files():

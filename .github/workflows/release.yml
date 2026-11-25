@@ -94,3 +94,23 @@ jobs:
         uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
         with:
           attestations: true # PEP 740 attestations (the default; stated so it stays on); needs Trusted Publishing
+
+  github-release:
+    name: create the GitHub Release
+    needs: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write # creates the Release for the tag; this job only, and it runs no repository code
+    steps:
+      - name: Create the GitHub Release (skipped when it already exists)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          if gh release view "${TAG}" >/dev/null 2>&1; then
+            echo "GitHub Release ${TAG} already exists; nothing to do"
+          else
+            gh release create "${TAG}" --verify-tag --generate-notes --title "${TAG}"
+          fi
